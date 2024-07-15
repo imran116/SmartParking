@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  *{
+    @apply scroll-smooth
+  }
+  body {
+    @apply text-white bg-[#242424] overflow-x-hidden; 
+  }
+}
+@layer utilities {
+    /*.heroWrapper {*/
+    /*    background-image: url('../library/logoAndImages/heroImage.jpg');*/
+    /*}*/
+  .userTypes > a {
+    @apply py-[15px] pl-[15px] border-b-[1px] hover:bg-gray-300 last:border-none;
+  }
+  .menusToggleAnimation {
+    @apply scale-x-[1];
+  }
+  .userTypesAnimation {
+    @apply scale-y-0;
+  }
+  .registerOptionsAnimation {
+    @apply scale-y-100;
+  }
+  .invalidStyle:has(input:focus:invalid) {
+    @apply border-yellow-400;
+  }
+  .validStyle:has(input:valid) {
+    @apply border-green-400;
+  }
+  .heroButton {
+    @apply p-2  flex space-x-3 text-[12px] rounded-lg items-center cursor-pointer duration-[0.6s] hover:scale-[1.02];
+  }
+  .normalButton {
+    @apply p-2 flex space-x-3 text-[14px] justify-center rounded-lg items-center cursor-pointer duration-[0.6s] hover:scale-[1.02];
+  }
+  .serviceButton {
+    @apply w-[250px] py-[1.3rem] rounded-sm text-center;
+  }
+  .divWrapperMaxWidth {
+    @apply max-w-[1500px];
+  }
+
+  .customGrid {
+    @apply grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+     -ms-overflow-style: none; /* IE and Edge */
+     scrollbar-width: none; /* Firefox */
+  }
+  .sideBarTogglerEffect{
+    @apply hidden
+  }
+  .sideBarEffect{
+    @apply fixed 
+  }
+  .targetedMenu{
+    @apply scale-0 origin-left absolute lg:scale-[1] lg:static
+  }
+  .targetedMenuEffect{
+    @apply duration-[1s] scale-[1] static
+  }
+  .dashboardTable>thead{
+    @apply border-b
+  }
+  .dashboardTable>thead th{
+    @apply border
+  }
+  .dashboardTable>tbody{
+    @apply w-[90%]
+  }
+  .dashboardTable tr{
+    @apply border-b text-center
+  }
+  .dashboardTable td{
+    @apply py-4
+  }
+  /* .dashboardTable>tbody tr td:last-child{
+    @apply bg-green-600
+  } */
+}

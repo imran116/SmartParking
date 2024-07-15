@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="/javascript/dashboard.js" defer></script>
+    <script src="/javascript/index.js" defer></script>
+    <link rel="stylesheet" href="/css/output.css" />
+  </head>
+  <body>
+    <!-- menu section -->
+
+
+      <!-- Login Form -->
+      <section class="w-[100%] h-[100%] flex items-center my-10">
+        <form
+          action=""
+          method="post"
+          class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
+        >
+          <img
+            src="/library/logoAndImages/car.png"
+            alt=""
+            class="w-[8rem] m-auto"
+          />
+          <h3>PLEASE LOGIN HERE</h3>
+
+          <fieldset
+            class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+          >
+            <label for="username">
+              <img
+                src="/library/svg/person.svg"
+                alt="Username"
+                class="w-[1.3rem]"
+              />
+            </label>
+
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="USERNAME"
+              class="border-collapse bg-transparent outline-none"
+              required
+            />
+          </fieldset>
+
+          <fieldset
+            class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+          >
+            <label for="password">
+              <img
+                src="/library/svg/lock.svg"
+                alt="Password"
+                class="w-[1.3rem]"
+              />
+            </label>
+
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="PASSWORD"
+              class="border-collapse bg-transparent outline-none"
+              required
+            />
+          </fieldset>
+
+          <button
+            type="submit"
+            class="bg-white text-black py-2 rounded-sm shadow-md shadow-gray-500 w-[100%]"
+          >
+            LOGIN
+          </button>
+
+          <span class="text-[10px] text-center">
+            <a href="./index.html" class="cursor-pointer">FORGOT PASSWORD?</a>
+            <br />
+            Don't have an account?<span
+              class="text-blue-600 registerOptionsToggler cursor-pointer"
+            >
+              REGISTER</span
+            >
+          </span>
+        </form>
+      </section>
+
+      <!-- FOOTER -->
+
+  </body>
+</html>
