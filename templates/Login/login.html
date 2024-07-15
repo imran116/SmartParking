@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <script src="/javascript/dashboard.js" defer></script>
-    <script src="/javascript/index.js" defer></script>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
-  <body>
-    <!-- menu section -->
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
 
 
       <!-- Login Form -->
@@ -20,7 +12,7 @@
           class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
         >
           <img
-            src="/library/logoAndImages/car.png"
+            src="{% static '/library/logoAndImages/car.png' %}"
             alt=""
             class="w-[8rem] m-auto"
           />
@@ -31,7 +23,7 @@
           >
             <label for="username">
               <img
-                src="/library/svg/person.svg"
+                src="{% static '/library/svg/person.svg' %}"
                 alt="Username"
                 class="w-[1.3rem]"
               />
@@ -52,7 +44,7 @@
           >
             <label for="password">
               <img
-                src="/library/svg/lock.svg"
+                src="{% static '/library/svg/lock.svg' %}"
                 alt="Password"
                 class="w-[1.3rem]"
               />
@@ -87,7 +79,4 @@
         </form>
       </section>
 
-      <!-- FOOTER -->
-
-  </body>
-</html>
+{% endblock %}
