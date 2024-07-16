@@ -12,27 +12,27 @@
             <h3>Register As</h3>
             <div class="flex flex-wrap gap-2">
               <a
-                href="./driverRegistration.html"
+                href="{% url "driverRegistration" %}"
                 class="normalButton bg-custom-Orange"
                 >Driver</a
               >
               <a
-                href="./ownerRegistration.html"
+                href="{% url "ownerRegistration" %}"
                 class="normalButton bg-custom-Orange"
                 >Owner</a
               >
               <a
-                href="./caretakerRegistration.html"
+                href="{% url "caretakerRegistration" %}"
                 class="normalButton bg-custom-Orange"
                 >Caretaker</a
               >
               <a
-                href="#"
+                href="{% url "socityRegistration" %}"
                 class="normalButton bg-custom-Orange"
                 >Commercial</a
               >
               <a
-                href="./socityRegistration.html"
+                href="{% url "socityRegistration" %}"
                 class="normalButton bg-custom-Orange"
                 >Socity</a
               >
@@ -94,7 +94,7 @@
             </div>
 
             <div class="flex space-x-5">
-              <a href="./availableLots.html" class="heroButton bg-green-600">
+              <a href="{% url "availableParkingLots" %}" class="heroButton bg-green-600">
                 <span
                   >All Available <br />
                   Parking Lots</span
@@ -103,7 +103,7 @@
               >
 
               <a
-                href="./availableParkingLots.html"
+                href="{% url "availableParkingLots" %}"
                 class="heroButton bg-custom-Orange"
               >
                 <span>Available Parking <br />Lots in Farmgate</span>
