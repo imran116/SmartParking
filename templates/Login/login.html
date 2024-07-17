@@ -2,8 +2,6 @@
 {% load static %}
 {% block main_container %}
 
-
-
       <!-- Login Form -->
       <section class="w-[100%] h-[100%] flex items-center my-10">
         <form
@@ -68,7 +66,7 @@
           </button>
 
           <span class="text-[10px] text-center">
-            <a href="./index.html" class="cursor-pointer">FORGOT PASSWORD?</a>
+            <a href="{% url "home" %}" class="cursor-pointer">FORGOT PASSWORD?</a>
             <br />
             Don't have an account?<span
               class="text-blue-600 registerOptionsToggler cursor-pointer"
