@@ -1,741 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socity Dashboard</title>
-    <script src="/javascript/index.js" defer></script>
-    <script src="/javascript/dashboard.js" defer></script>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
+{% extends "dashboardBase.html" %}
+{% load static %}
 
-  <body class="">
-    <main class="flex gap-1 md:gap-4 max-w-[1500px] h-[100svh]">
-      <!-- sidebar -->
-      <div
-        class="sidebar duration-[1s] z-50 h-[100%] w-fit inline-flex flex-col gap-4 justify-between py-[1rem] px-[5px] lg:p-[1rem] bg-custom-Orange items-center"
+{% block main_container %}
+
+<div class="flex flex-col gap-4 bg-card-color p-6">
+  <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
+    <div class="">
+      <h3>Current Parking Status</h3>
+      <span class="text-green-600">All Members</span>
+    </div>
+
+    <div class="flex gap-2 flex-wrap">
+      <fieldset
+        class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
       >
-        <a href="./index.html">
+        <label for="phoneNumber" class="flex gap-2 items-center">
           <img
-            src="/library/logoAndImages/parking.png"
-            alt="CAR PARKING"
-            class="hidden w-[200px] lg:block"
+            src="{% static '/library/svg/search.svg' %}"
+            alt="Search"
+            class="w-[1rem]"
           />
-          <img
-            src="/library/logoAndImages/car.png"
-            alt="Home"
-            class="w-[4rem] lg:hidden"
+          <input
+            type="search"
+            name="phoneNumber"
+            id="phoneNumber"
+            class="border-collapse bg-transparent outline-none"
+            placeholder="Search by phone number"
           />
-        </a>
+        </label>
+      </fieldset>
 
-        <div class="sidebarOptions pb-10 lg:pb-0 flex flex-col gap-4">
-          <div class="lg:hidden rounded-md p-2">
-            <img
-              src="/library/svg/exit.svg"
-              alt="Close"
-              class="w-[2rem]  m-auto sideBarCloser sideBarTogglerEffect sideBarToggler"
-            />
-            <img
-              src="/library/svg/open.svg"
-              alt="Open"
-              class="w-[2rem] m-auto sideBarOpener sideBarToggler"
-            />
-          </div>
-
-          <a
-            href="./socityDashboard.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent visited:bg-red-600 rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/dashboard.svg"
-                alt="Dashboard"
-                class="w-[1.5rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Dashboard</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./index.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/home.svg"
-                alt="Home"
-                class="w-[1.2rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Home</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./bookFromParkingLot.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/booking.svg"
-                alt="Book"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Book Parking</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./dashboardAddSlotOwner.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/person.svg"
-                alt="Add Slot Owner"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./dashboardAddParkingSlot.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/add.svg"
-                alt="Add Slot"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Add Parking Slot</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./dashboardAccount.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/account.svg"
-                alt="Account"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Account</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-
-          <a
-            href="./dashboardParkingMap.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/map.svg" alt="Map" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">Parking Map</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-          /></a>
-
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/cctv.svg" alt="CCTV" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">CCTV</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-          /></a>
-
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/help.svg" alt="Help" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">Help</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
-        </div>
-        <span class="text-[12px] targetedMenu duration-[1s] "
-          >Copyright and Developed © 2024 OS IT Solution Ltd</span
-        >
-      </div>
-
-      <!-- toggled Sidebar -->
-      <!-- <div
-        class="sidebar targetedSideBar duration-[1s] targetedSideBarEffect h-[100%] w-[280px] inline-flex flex-col justify-between p-[1rem] bg-custom-Orange items-center lg:hidden fixed z-40"
+      <fieldset
+        class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
       >
-        <a href="./index.html">
-          <img
-            src="/library/logoAndImages/parking.png"
-            alt="CAR PARKING"
-            class="w-[200px]"
-          />
-        </a>
+        <label for="Status" class="flex gap-2 items-center">
+          Short by:
+          <select name="status" id="Status" class="bg-transparent">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </label>
+      </fieldset>
+    </div>
+  </div>
 
-        <div class="sidebarOptions w-[100%] flex flex-col gap-4">
-          <div
-            class="lg:hidden hover:bg-Custom-Transparent rounded-md p-2 w-[3rem] mx-auto"
-          >
-            <img
-              src="/library/svg/exit.svg"
-              alt="Close"
-              class="w-[2rem] sideBarCloser sideBarTogglerEffect sideBarToggler"
-            />
-            <img
-              src="/library/svg/open.svg"
-              alt="Open"
-              class="w-[2rem] sideBarOpener sideBarToggler"
-            />
-          </div>
-          <a
-            href="./dashboard.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/dashboard.svg"
-                alt="Dashboard"
-                class="w-[1rem]"
-              />
-              <span>Dashboard</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
+  <div class="overflow-auto max-h-[500px] flex">
+    <table
+      class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
+    >
+      <thead class="sticky bg-custom-Orange top-0">
+        <tr>
+          <th>
+            Parking <br />
+            Slot Name
+          </th>
+          <th>Vehicle Type</th>
+          <th>Driver Phone</th>
+          <th>Date</th>
+          <th>Duration</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
 
-          <a
-            href="./index.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/home.svg" alt="Home" class="w-[1rem]" />
-              <span>Home</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
+      <tbody class="">
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td>------</td>
+          <td class="statusCell">------</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>0140####799</td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Upcoming</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-          <a
-            href="./bookFromParkingLot.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/booking.svg"
-                alt="Booking"
-                class="w-[1rem]"
-              />
-              <span>Book Parking</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
+{% endblock %}
 
-          <a
-            href="./dashboardAddSlotOwner.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/person.svg"
-                alt="Booking"
-                class="w-[1rem]"
-              />
-              <span>Add Slot Owner</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-
-          <a
-            href="./dashboardAddParkingSlot.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/add.svg" alt="Add" class="w-[1rem]" />
-              <span>Add Parking Slot</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-
-          <a
-            href="./dashboardAccount.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/account.svg"
-                alt="Accounts"
-                class="w-[1rem]"
-              />
-              <span>Accounts</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-
-          <a
-            href="./dashboardParkingMap.html"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="/library/svg/map.svg"
-                alt="Parking Map"
-                class="w-[1rem]"
-              />
-              <span>Parking Map</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/cctv.svg" alt="CCTV" class="w-[1rem]" />
-              <span>CCTV</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="/library/svg/help.svg" alt="Help" class="w-[1rem]" />
-              <span>Help</span>
-            </div>
-            <img
-              src="/library/svg/rightArrow.svg"
-              alt="GO"
-              class="w-[1rem]"
-            />
-          </a>
-        </div>
-        <span class="text-[12px]"
-          >Copyright and Developed © 2024 OS IT Solution Ltd</span
-        >
-      </div> -->
-
-      <!-- top Menubar -->
-
-      <div
-        class="flex flex-col p-[1rem] gap-4 w-[100%] h-[100%] overflow-y-scroll"
-      >
-        <div class="flex flex-col gap-4">
-          <div class="flex justify-end md:justify-between items-center">
-            <h3 class="hidden md:block">Hello shakib1122 👋🏼</h3>
-            <div class="inline-flex gap-6 items-center">
-              <img
-                src="/library/svg/notification.svg"
-                alt="Notifications"
-                class="w-[1.5rem]"
-              />
-              <a href="#">
-                <img
-                  src="/library/logoAndImages/profilePic.jpg"
-                  alt="Profile"
-                  class="w-[2rem] rounded-full"
-                />
-              </a>
-              <div class="flex flex-col">
-                <b class="text-nowrap">Atiqur Rahman</b>
-                <span>Society Owner</span>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap-4 justify-start">
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Available <br />
-                Parking Space
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Occupied <br />
-                Parking Space
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Available In<br />
-                Next 20 Minutes
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
-
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>Total Earning</p>
-              <h3 class="text-custom-Orange">5000/BDT</h3>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content -->
-
-        <div class="flex flex-col gap-4 bg-card-color p-6">
-          <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
-            <div class="">
-              <h3>Current Parking Status</h3>
-              <span class="text-green-600">All Members</span>
-            </div>
-
-            <div class="flex gap-2 flex-wrap">
-              <fieldset
-                class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-              >
-                <label for="phoneNumber" class="flex gap-2 items-center">
-                  <img
-                    src="/library/svg/search.svg"
-                    alt="Search"
-                    class="w-[1rem]"
-                  />
-                  <input
-                    type="search"
-                    name="phoneNumber"
-                    id="phoneNumber"
-                    class="border-collapse bg-transparent outline-none"
-                    placeholder="Search by phone number"
-                  />
-                </label>
-              </fieldset>
-
-              <fieldset
-                class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-              >
-                <label for="Status" class="flex gap-2 items-center">
-                  Short by:
-                  <select name="status" id="Status" class="bg-transparent">
-                    <option value="all">All</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                    <option value="upcoming">Upcoming</option>
-                  </select>
-                </label>
-              </fieldset>
-            </div>
-          </div>
-
-          <div class="overflow-auto max-h-[500px] flex">
-            <table
-              class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
-            >
-              <thead class="sticky bg-custom-Orange top-0">
-                <tr>
-                  <th>
-                    Parking <br />
-                    Slot Name
-                  </th>
-                  <th>Vehicle Type</th>
-                  <th>Driver Phone</th>
-                  <th>Date</th>
-                  <th>Duration</th>
-                  <th>Amount</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody class="">
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Active</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Inactive</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Active</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Inactive</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Active</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Inactive</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Active</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Inactive</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Active</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Inactive</td>
-                </tr>
-                <tr>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td>------</td>
-                  <td class="statusCell">------</td>
-                </tr>
-                <tr>
-                  <td>A1</td>
-                  <td>2 Wheeler</td>
-                  <td>0140####799</td>
-                  <td>10-7-2024</td>
-                  <td>2:00pm-3:00pm</td>
-                  <td>400 BDT</td>
-                  <td class="statusCell">Upcoming</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <script></script>
-  </body>
-</html>
