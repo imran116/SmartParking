@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Parking Lot Page</title>
-    <script src="/javascript/dashboard.js" defer></script>
-    <script src="/javascript/index.js" defer></script>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
-
-  <body>
-
-      <!-- main Section starts here -->
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
 
       <section class="flex justify-center">
         <div
@@ -107,7 +96,7 @@
                 >
                   <img
                     onclick="showBookingCard(this)"
-                    src="/library/svg/exit.svg"
+                    src="{% static '/library/svg/exit.svg' %}"
                     alt="Exit"
                     class="w-[3rem] mx-auto mb-4 bookingCardToggler"
                   />
@@ -116,7 +105,7 @@
                   ></span>
                   <span class="block">Duration: 3 Hours</span>
                   <span class="block">Total Cost: 1500 BDT</span>
-                  <a href="./socityDashboard.html">
+                  <a href="{% url "socityDashboard" %}">
                     <button
                       class="p-[4px] bg-Custom-Transparent rounded-md w-[100%]"
                     >
@@ -526,7 +515,7 @@
           <div class="flex flex-col gap-4 justify-center items-center">
             <h2>Parking Lot's locations</h2>
             <img
-              src="/library/logoAndImages/licationInMap.png"
+              src="{% static '/library/logoAndImages/licationInMap.png' %}"
               alt="Socity locations"
               class="h-[100%]"
             />
@@ -537,7 +526,7 @@
       <!-- main Section starts here -->
 
     <script>
-      const parkingSlots = document.querySelectorAll(".parkingSlot");
+      {% comment %} const parkingSlots = document.querySelectorAll(".parkingSlot");
       parkingSlots.forEach((eachParkingSlot) => {
         if (eachParkingSlot.value == "available") {
           eachParkingSlot.classList.add("bg-green-600");
@@ -548,7 +537,7 @@
           eachParkingSlot.classList.add("bg-red-600");
           eachParkingSlot.setAttribute("disabled", true);
         }
-      });
+      }); {% endcomment %}
 
       function creatCard(e) {
         document.querySelector(".slectedSlotName").innerHTML = `${e.name}`;
@@ -558,5 +547,6 @@
         document.querySelector(".bookingCard").classList.toggle("hidden");
       }
     </script>
-  </body>
-</html>
+
+{% endblock %}
+

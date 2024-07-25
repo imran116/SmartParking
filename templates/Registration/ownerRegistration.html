@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Owner Registration</title>
-    <script src="/javascript/dashboard.js" defer></script>
-    <script src="/javascript/index.js" defer></script>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
-  <body class="">
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
     <section
       class="text-white w-[100%] h-[100%] flex items-center my-10"
     >
@@ -18,13 +11,13 @@
         class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
       >
 
-      <img src="/library/logoAndImages/car.png" alt="" class="w-[8rem] m-auto">
+      <img src="{% static '/library/logoAndImages/car.png' %}" alt="" class="w-[8rem] m-auto">
        <h2>SIGN UP HERE AS A OWNER</h2>
 
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="username">
             <img
-              src="/library/svg/person.svg"
+              src="{% static '/library/svg/person.svg' %}"
               alt="Username"
               class="w-[1.3rem]"
             />
@@ -42,7 +35,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="phone">
             <img
-              src="/library/svg/phone.svg"
+              src="{% static '/library/svg/phone.svg' %}"
               alt="Phone"
               class="w-[1.3rem]"
             />
@@ -60,7 +53,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
             <label for="email">
               <img
-                src="/library/svg/email.svg"
+                src="{% static '/library/svg/email.svg' %}"
                 alt="Email"
                 class="w-[1.5rem]"
               />
@@ -78,7 +71,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="password">
             <img
-              src="/library/svg/lock.svg"
+              src="{% static '/library/svg/lock.svg' %}"
               alt="Password"
               class="w-[1.3rem]"
 
@@ -97,7 +90,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="confirmPassword">
             <img
-              src="/library/svg/lock.svg"
+              src="{% static '/library/svg/lock.svg' %}"
               alt="Confirm Password"
               class="w-[1.3rem]"
             />
@@ -125,7 +118,7 @@
               for="profilePicture"
               class="flex flex-col items-center space-y-2"
             >
-              <img src="/library/svg/upload.svg" alt="" class="w-[1.2rem]" />
+              <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
               <span class="text-center text-[10px]">
                 UPLOAD <br />
                 PROFILE PICTURE
@@ -138,7 +131,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="socity/houseName">
             <img
-              src="/library/svg/home.svg"
+              src="{% static '/library/svg/home.svg' %}"
               alt="Socity/House Name"
               class="w-[1.3rem]"
             />
@@ -156,7 +149,7 @@
         <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
           <label for="address">
             <img
-              src="/library/svg/home.svg"
+              src="{% static '/library/svg/home.svg' %}"
               alt="Address"
               class="w-[1.3rem]"
             />
@@ -179,9 +172,9 @@
         </button>
         <span class="text-center"
           >Already have an account?
-          <a href="./login.html" class="text-blue-500">Login</a></span
+          <a href="{% url "login" %}" class="text-blue-500">Login</a></span
         >
       </form>
     </section>
-  </body>
-</html>
+
+{% endblock %}

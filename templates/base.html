@@ -18,7 +18,7 @@
           class="navWrapper w-[100%] divWrapperMaxWidth flex flex-row justify-around items-center"
         >
           <div class="w-[200px] p-0">
-            <a href="./index.html">
+            <a href="{% url "home" %}">
               <img
                 src="{% static '/library/logoAndImages/parking.png' %}"
                 alt="Car Parking"
@@ -42,7 +42,7 @@
             class="flex flex-col py-8 relative w-[50%] gap-5 items-center top-[8rem] bg-Custom-Transparent scale-x-0 origin-right right-[-8%] justify-between duration-[1s] rounded-lg targetMenus md:hidden"
           >
             <p class="cursor-pointer registerOptionsToggler">Registration</p>
-            <a href="./login.html">Login</a>
+            <a href="{% url "login" %}">Login</a>
             <a href="#">About Us</a>
             <span class="flex gap-1">
               <p class="banglaLan cursor-pointer hover:scale-[1.1]">বাংলা</p>
@@ -59,7 +59,7 @@
       </nav>
 
       <section
-        class="registerOptions z-40 scale-y-0 origin-top duration-[1s] fixed rounded-t-xl bg-Custom-Transparent flex justify-center items-center left-[40%] top-[15%] md:top-[10%]"
+        class="registerOptions z-40 scale-y-0 origin-top duration-[1s] fixed rounded-t-xl flex justify-center items-center left-[40%] top-[15%] md:top-[10%]"
       >
         <!-- <div class=" flex flex-col items-center space-y-5">
           <img
@@ -79,15 +79,15 @@
           <div
             class="userTypes bg-custom-Orange flex flex-col scale-y-100 duration-[1s] origin-top"
           >
-            <a href="./driverRegistration.html"><h3>DRIVER</h3></a>
-            <a href="./ownerRegistration.html"><h3>OWNER</h3></a>
-            <a href="./otpVarification.html"><h3>OTP VARIFICATION</h3></a>
-            <a href="./otpVarificationUnSuccessful.html"
+            <a href="{% url "driverRegistration" %}"><h3>DRIVER</h3></a>
+            <a href="{% url "ownerRegistration" %}"><h3>OWNER</h3></a>
+            <a href="{% url "otpVarification" %}"><h3>OTP VARIFICATION</h3></a>
+            <a href="{% url "otpVarificationUnSuccessful" %}"
               ><h3>VARIFICATION UNSUCCESSFUL</h3></a
             >
-            <a href="./caretakerRegistration.html"><h3>CARETAKER</h3></a>
-            <a href="./driverRegistration.html"><h3>COMMERCIAL</h3></a>
-            <a href="./socityRegistration.html"><h3>SOCITY</h3></a>
+            <a href="{% url "caretakerRegistration" %}"><h3>CARETAKER</h3></a>
+            <a href="{% url "socityRegistration" %}"><h3>COMMERCIAL</h3></a>
+            <a href="{% url "socityRegistration" %}"><h3>SOCITY</h3></a>
           </div>
         </div>
       </section>

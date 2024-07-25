@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Available Parking Lots Page</title>
-    <script src="/javascript/dashboard.js" defer></script>
-    <script src="/javascript/index.js" defer></script>
-    <link rel="stylesheet" href="/css/output.css" />
-  </head>
-
-  <body>
-    <!-- main Section starts here -->
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
 
     <section class="flex justify-center">
       <div
@@ -28,7 +18,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -41,7 +31,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -54,7 +44,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -67,7 +57,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -80,7 +70,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -93,7 +83,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -106,7 +96,7 @@
               <p>Road No: #03</p>
               <p>Phone: 0140####799</p>
               <a
-                href="./bookFromParkingLot.html"
+                href="{% url "bookFromParkingLot" %}"
                 class="normalButton bg-custom-Orange"
               >
                 <p>Check Now</p>
@@ -118,7 +108,7 @@
         <div class="flex flex-col gap-4 justify-center items-center">
           <h2>Parking Lots locations</h2>
           <img
-            src="/library/logoAndImages/licationInMap.png"
+            src="{% static '/library/logoAndImages/licationInMap.png' %}"
             alt="Socity locations"
             class="h-[100%]"
           />
@@ -126,6 +116,4 @@
       </div>
     </section>
 
-    <!-- main Section starts here -->
-  </body>
-</html>
+{% endblock %}
