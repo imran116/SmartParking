@@ -1,211 +1,100 @@
+<!-- E:\SmartParking\templates\Registration\socityRegistration.html -->
 {% extends 'base.html' %}
 {% load static %}
 {% block main_container %}
 
-    <section class="w-[100%] h-[100%] flex items-center my-10">
-      <form
-        action="#"
-        method="post"
-        class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
-      >
-      {% csrf_token %}
-        <img
-          src="{% static '/library/logoAndImages/car.png' %}"
-          alt=""
-          class="w-[8rem] m-auto"
-        />
-        <h2 class="text-center">SIGN UP HERE AS A</h2>
+<section class="w-[100%] h-[100%] flex items-center my-10">
+  <form
+    action="{% url 'society_registration' %}"
+    method="post"
+    class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
+    enctype="multipart/form-data"
+  >
+  {% csrf_token %}
+    <img
+      src="{% static 'library/logoAndImages/car.png' %}"
+      alt=""
+      class="w-[8rem] m-auto"
+    />
+    <h2 class="text-center">SIGN UP HERE AS A</h2>
 
-        <div class="flex gap-2">
-          <label for="commercial" class=" flex items-center gap-1">
-            <input type="radio" name="rigisterType" id="commercial" value="commercial"> Commercial
-          </label>
+    <div class="flex gap-2">
+      <label for="commercial" class="flex items-center gap-1">
+        <input type="radio" name="registerType" id="commercial" value="commercial"> Commercial
+      </label>
 
-          <label for="socity"  class=" flex items-center gap-1">
-            <input type="radio" name="rigisterType" id="socity" value="socity"> Socity
-          </label>
-          
-        </div>
+      <label for="society" class="flex items-center gap-1">
+        <input type="radio" name="registerType" id="society" value="society"> Society
+      </label>
+    </div>
 
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="username">
-            <img
-              src="{% static '/library/svg/person.svg' %}"
-              alt="Username"
-              class="w-[1.3rem]"
-            />
-          </label>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="username">
+        <img src="{% static 'library/svg/person.svg' %}" alt="Username" class="w-[1.3rem]" />
+      </label>
+      <input type="text" name="username" id="username" placeholder="USERNAME" class="border-collapse bg-transparent outline-none" required />
+    </fieldset>
 
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="USERNAME"
-            class="border-collapse bg-transparent outline-none"
-            required
-          />
-        </fieldset>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="phone">
+        <img src="{% static 'library/svg/phone.svg' %}" alt="Phone" class="w-[1.3rem]" />
+      </label>
+      <input type="text" name="phone" id="phone" placeholder="PHONE" class="border-collapse bg-transparent outline-none" required />
+    </fieldset>
 
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="phone">
-            <img
-              src="{% static '/library/svg/phone.svg' %}"
-              alt="Phone"
-              class="w-[1.3rem]"
-            />
-          </label>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="email">
+        <img src="{% static 'library/svg/email.svg' %}" alt="Email" class="w-[1.5rem]" />
+      </label>
+      <input type="email" name="email" id="email" placeholder="EMAIL" class="border-collapse bg-transparent outline-none" required />
+    </fieldset>
 
-          <input
-            type="text"
-            name="Phone"
-            id="Phone"
-            placeholder="PHONE"
-            class="border-collapse bg-transparent outline-none"
-            required
-          />
-        </fieldset>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="password">
+        <img src="{% static 'library/svg/lock.svg' %}" alt="Password" class="w-[1.3rem]" />
+      </label>
+      <input type="password" name="password" id="password" placeholder="PASSWORD" class="border-collapse bg-transparent outline-none" required />
+    </fieldset>
 
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="email">
-            <img
-              src="{% static '/library/svg/email.svg' %}"
-              alt="Email"
-              class="w-[1.5rem]"
-            />
-          </label>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="confirm_password">
+        <img src="{% static 'library/svg/lock.svg' %}" alt="Confirm Password" class="w-[1.3rem]" />
+      </label>
+      <input type="password" name="confirm_password" id="confirm_password" placeholder="CONFIRM PASSWORD" class="border-collapse bg-transparent outline-none" required />
+    </fieldset>
 
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="EMAIL"
-            class="border-collapse bg-transparent outline-none"
-            required
-          />
-        </fieldset>
+    <div class="flex gap-2 items-center">
+      <div class="border border-white p-2 rounded-lg relative invalidStyle validStyle">
+        <input type="file" name="profile_picture" id="profile_picture" class="invisible absolute" required />
+        <label for="profile_picture" class="flex flex-col items-center space-y-2">
+          <img src="{% static 'library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
+          <span class="text-center text-[10px]">UPLOAD <br />PROFILE PICTURE</span>
+        </label>
+      </div>
+    </div>
 
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="password">
-            <img
-              src="{% static '/library/svg/lock.svg' %}"
-              alt="Password"
-              class="w-[1.3rem]"
-            />
-          </label>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="society_house_name">
+        <img src="{% static 'library/svg/home.svg' %}" alt="Society/House Name" class="w-[1.3rem]" />
+      </label>
+      <input type="text" name="society_house_name" id="society_house_name" placeholder="SOCIETY/HOUSE NAME" class="border-collapse bg-transparent outline-none text-white" />
+    </fieldset>
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="PASSWORD"
-            class="border-collapse bg-transparent outline-none"
-            required
-          />
-        </fieldset>
+    <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
+      <label for="address">
+        <img src="{% static 'library/svg/home.svg' %}" alt="Address" class="w-[1.3rem]" />
+      </label>
+      <input type="text" name="address" id="address" placeholder="ADDRESS" class="border-collapse bg-transparent outline-none text-white" />
+    </fieldset>
 
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="confirmPassword">
-            <img
-              src="{% static '/library/svg/lock.svg' %}"
-              alt="Confirm Password"
-              class="w-[1.3rem]"
-            />
-          </label>
+    <button type="submit" class="bg-white text-black py-2 rounded-sm shadow-md shadow-gray-500 w-[100%]">
+      SIGN UP
+    </button>
+    <span class="text-center">Already have an account? <a href="{% url 'login' %}" class="text-blue-500">Login</a></span>
+  </form>
+</section>
 
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            placeholder="CONFIRN PASSWORD"
-            class="border-collapse bg-transparent outline-none required:"
-          />
-        </fieldset>
-
-        <div class="flex gap-2 items-center">
-          <div
-            class="border border-white p-2 rounded-lg relative invalidStyle validStyle"
-          >
-            <input
-              type="file"
-              name="profilePicture"
-              id="profilePicture"
-              class="invisible absolute"
-              required
-            />
-            <label
-              for="profilePicture"
-              class="flex flex-col items-center space-y-2"
-            >
-              <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
-              <span class="text-center text-[10px]">
-                UPLOAD <br />
-                PROFILE PICTURE
-              </span>
-            </label>
-          </div>
-        </div>
-
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="socity/houseName">
-            <img
-              src="{% static '/library/svg/home.svg' %}"
-              alt="Socity/House Name"
-              class="w-[1.3rem]"
-            />
-          </label>
-
-          <input
-            type="password"
-            name="socity/houseName"
-            id="socity/houseName"
-            placeholder="SOCITY/HOUSE NAME"
-            class="border-collapse bg-transparent outline-none text-white required:"
-          />
-        </fieldset>
-
-        <fieldset
-          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
-        >
-          <label for="address">
-            <img
-              src="{% static '/library/svg/home.svg' %}"
-              alt="Address"
-              class="w-[1.3rem]"
-            />
-          </label>
-
-          <input
-            type="password"
-            name="address"
-            id="address"
-            placeholder="ADDRESS"
-            class="border-collapse bg-transparent outline-none text-white required:"
-          />
-        </fieldset>
-
-        <button
-          type="submit"
-          class="bg-white text-black py-2 rounded-sm shadow-md shadow-gray-500 w-[100%]"
-        >
-          SIGN UP
-        </button>
-        <span class="text-center"
-          >Already have an account?
-          <a href="{% url "login" %}" class="text-blue-500">Login</a></span
-        >
-      </form>
-    </section>
-    
 {% endblock %}
+
+
+
