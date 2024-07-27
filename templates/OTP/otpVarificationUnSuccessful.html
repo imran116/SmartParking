@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+
+    <section class="w-[100%] h-[100%] flex items-center justify-center my-10">
+      <div
+        class="flex flex-col space-y-4 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
+      >
+        <img
+          src="{% static '/library/svg/unhappy.svg' %}"
+          alt=""
+          class="w-[8rem] m-auto"
+        />
+        <h3>UNSUCCESSFUL!</h3>
+        <p>The OTP code you inputed is not correct</p>
+
+        <a
+        href="{% url "home" %}"
+          class="bg-Custom-Transparent p-3 text-center rounded-xl shadow-lg shadow-black-500 w-[70%] hover:scale-[1.01]"
+        >
+          Go to home page
+        </a>
+      </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+
+    <section class="w-[100%] h-[100%] flex items-center justify-center my-10">
+      <form
+        action="#"
+        method="post"
+        class="flex flex-col space-y-4 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
+      >
+        <img
+          src="{% static '/library/logoAndImages/car.png' %}"
+          alt=""
+          class="w-[8rem] m-auto"
+        />
+        <h3>OTP VARIFICATION</h3>
+        <p>We have sent the verification code to your phone number</p>
+
+        <div class="flex space-x-3">
+          <input
+            type="text"
+            id="digit1"
+            onkeyup="moveToNext(this,'digit2')"
+            
+            class="border bg-transparent outline-none w-[3rem] h-[3rem] text-center rounded-xl"
+            maxlength="1"
+            required
+          />
+          <input
+            type="text"
+            id="digit2"
+            onkeyup="moveToNext(this,'digit3')"
+            
+            class="border bg-transparent outline-none w-[3rem] h-[3rem] text-center rounded-xl"
+            maxlength="1"
+            required
+          />
+          <input
+            type="text"
+            id="digit3"
+            onkeyup="moveToNext(this,'digit4')"
+            
+            class="border bg-transparent outline-none w-[3rem] h-[3rem] text-center rounded-xl"
+            maxlength="1"
+            required
+          />
+          <input
+            type="text"
+            id="digit4"
+            onkeyup="moveToNext(this,'digit4')"
+            
+            class="border bg-transparent outline-none w-[3rem] h-[3rem] text-center rounded-xl"
+            maxlength="1"
+            required
+          />
+        </div>
+
+        <p>00.00</p>
+        <span class="text-black flex text-[14px] gap-1"
+          >Did't get any OTP?
+          <p class="text-white cursor-pointer" onclick="">Send OTP</p></span
+        >
+
+        <button
+          type="submit"
+          class="bg-Custom-Transparent p-3 rounded-xl shadow-lg shadow-black-500 w-[70%] hover:scale-[1.01]"
+        >
+          SIGN UP
+        </button>
+      </form>
+    </section>
+
+    <script>
+      function moveToNext(e, nextFieldID){
+        if (e.value.length >= 1) {
+          document.getElementById(nextFieldID).focus();
+        }
+      };
+    </script>
+
+{% endblock %}

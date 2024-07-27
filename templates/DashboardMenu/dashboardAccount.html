@@ -1,0 +1,253 @@
+{% extends "dashboardBase.html" %}
+{% load static %}
+
+{% block main_container %}
+
+
+        <!-- Content -->
+
+        <!-- first table -->
+
+        <div class="flex flex-col gap-4 bg-card-color p-6">
+          <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
+            <div class="">
+              <h3>Parking Slot Owners list</h3>
+              <span class="text-green-600">All Members</span>
+            </div>
+
+            <div class="flex gap-2 flex-wrap">
+              <fieldset
+                class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
+              >
+                <label for="phoneNumber" class="flex gap-2 items-center">
+                  <img
+                    src="{% static '/library/svg/search.svg' %}"
+                    alt="Search"
+                    class="w-[1rem]"
+                  />
+                  <input
+                    type="search"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    class="border-collapse bg-transparent outline-none"
+                    placeholder="Search by phone number"
+                  />
+                </label>
+              </fieldset>
+
+              <fieldset
+                class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
+              >
+                <label for="Status" class="flex gap-2 items-center">
+                  Short by:
+                  <select name="status" id="Status" class="bg-transparent">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </label>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="overflow-auto max-h-[365px] flex">
+            <table
+              class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
+            >
+              <thead class="sticky bg-custom-Orange top-0">
+                <tr>
+                  <th>
+                    Parking <br />
+                    Slot Name
+                  </th>
+                  <th>Username</th>
+                  <th>Phone</th>
+                  <th>Total Earning</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody class="">
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Active</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Inactive</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Active</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Inactive</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Active</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Inactive</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Active</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Inactive</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Active</td>
+                </tr>
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Inactive</td>
+                </tr>
+
+                <tr>
+                  <td>A1</td>
+                  <td>Hyder</td>
+                  <td>0140####799</td>
+                  <td>1500 BDT</td>
+                  <td class="statusCell">Upcoming</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2nd table -->
+
+        <div class="flex flex-col gap-4 bg-card-color p-6">
+          <div class="">
+            <h3>Parking Caretakers list</h3>
+            <span class="text-green-600">All Members</span>
+          </div>
+
+          <div class="flex flex-col gap-4 bg-card-color p-6">
+            <div class="">
+              <h3>Parking Caretakers list</h3>
+              <span class="text-green-600">All Members</span>
+            </div>
+  
+            <div class="overflow-auto flex">
+              <table
+                class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
+              >
+                <thead class="sticky bg-custom-Orange top-0">
+                  <tr>
+                    <th>
+                      Parking <br />
+                      Slot Name
+                    </th>
+                    <th>Username</th>
+                    <th>Phone</th>
+                    <th>NID</th>
+                  </tr>
+                </thead>
+  
+                <tbody class="">
+                  <tr>
+                    <td>A1</td>
+                    <td>Hyder</td>
+                    <td>0140####799</td>
+                    <td class="bg-green-950"><a href="{% static "/library/logoAndImages/nid.pdf" %}" download class="">Download</a></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>A1</td>
+                    <td>Hyder</td>
+                    <td>0140####799</td>
+                    <td class="bg-green-950"><a href="{% static "/library/logoAndImages/nid.pdf" %}" download class="">Download</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+{% endblock %}
+
+

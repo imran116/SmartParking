@@ -1,0 +1,78 @@
+{% extends "dashboardBase.html" %}
+{% load static %}
+
+{% block main_container %}
+
+
+<form action="#" class="flex flex-col gap-6">
+  <label class="flex flex-col gap-2">
+    Parking Slot Name
+    <input
+      type="text"
+      name="slotName"
+      id="slotName"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Parking Slot Owner Name
+    <input
+      type="text"
+      name="slotOwner"
+      id="slotOwner"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    House / Society Name
+    <input
+      type="text"
+      name="socityName"
+      id="socityName"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Parking Charge Category
+    <select
+      name="ChargeCategory"
+      id="ChargeCategory"
+      class="text-black border-collapse outline-none max-w-[450px] p-2 rounded-md"
+    >
+      <option value="hourly">Hourly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Enter Parking Charge *BDT
+    <input
+      type="text"
+      name="parkingCharge"
+      id="parkingCharge"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <button
+    type="submit"
+    class="bg-custom-Orange border-collapse outline-none max-w-[200px] p-2 rounded-md hover:scale-[1.01]"
+  >
+    Submit
+  </button>
+</form>
+
+{% endblock %}
+
+

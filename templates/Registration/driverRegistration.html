@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+    <section class="w-[100%] h-[100%] flex items-center my-10">
+      <form
+        action="{% url 'register:driver-registration' %}"
+        method="POST"
+        class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
+        enctype="multipart/form-data"
+      >
+          {% csrf_token %}
+        <img src="{% static '/library/logoAndImages/car.png' %}" alt="" class="w-[8rem] m-auto">
+        <h2>SIGN UP HERE AS A DRIVER</h2>
+
+        <fieldset
+          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+        >
+          <label for="username">
+            <img
+              src="{% static '/library/svg/person.svg' %}"
+              alt="Username"
+              class="w-[1.3rem]"
+            />
+          </label>
+
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="USERNAME"
+            value="{{ username }}"
+            class="border-collapse bg-transparent outline-none "
+            required
+          />
+        </fieldset>
+
+        <fieldset
+          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+        >
+          <label for="phone">
+            <img
+              src="{% static '/library/svg/phone.svg' %}"
+              alt="Phone"
+              class="w-[1.3rem]"
+            />
+          </label>
+
+          <input
+            type="text"
+            name="driver_phone_number"
+            id="driver_phone_number"
+            placeholder="PHONE"
+            value="{{ driver_phone_number }}"
+            class="border-collapse bg-transparent outline-none "
+            required
+          />
+        </fieldset>
+
+        <div class="w-[100%]">
+          <label for="vehicle">VEHICLE TYPE</label>
+          <div class="pl-8 flex space-x-9">
+            <label class="flex">
+              <input
+                type="radio"
+                name="vehicle_type"
+                id="vehicle_type"
+                value="car"
+                {% if vehicle_type == 'car' %} checked {% endif %}
+                required
+              />
+              <img
+                src="{% static '/library/svg/car.svg' %}"
+                alt="car"
+                class="w-[4rem] ml-2"
+              />
+            </label>
+
+            <label class="flex">
+              <input
+                type="radio"
+                name="vehicle_type"
+                id="vehicle_type"
+                value="three_wheeler"
+                {% if vehicle_type == 'three_wheeler' %} checked {% endif %}
+                required
+              />
+              <img
+                src="{% static '/library/svg/threeWheeler.svg' %}"
+                alt="Three Wheeler"
+                class="w-[4rem] ml-2"
+              />
+            </label>
+
+            <label class="flex">
+              <input
+                type="radio"
+                name="vehicle_type"
+                id="vehicle_type"
+                value="motorcycle"
+                {% if vehicle_type == 'motorcycle' %} checked {% endif %}
+                required
+              />
+              <img
+                src="{% static '/library/svg/motorcycle.svg' %}"
+                alt="Motorcycle"
+                class="w-[3rem] ml-2"
+              />
+            </label>
+          </div>
+        </div>
+
+        <fieldset
+          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+        >
+          <label for="password">
+            <img
+              src="{% static '/library/svg/lock.svg' %}"
+              alt="Password"
+              class="w-[1.3rem]"
+            />
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="PASSWORD"
+            class="border-collapse bg-transparent outline-none "
+            required
+          />
+        </fieldset>
+
+        <fieldset
+          class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]"
+        >
+          <label for="confirmPassword">
+            <img
+              src="{% static '/library/svg/lock.svg' %}"
+              alt="Confirm Password"
+              class="w-[1.3rem]"
+            />
+          </label>
+
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="CONFIRM PASSWORD"
+            class="border-collapse bg-transparent outline-none required:"
+          />
+
+        </fieldset>
+          {% for message in messages %}
+              <p>{{ message }}</p>
+          {% endfor %}
+          <p>{{ user_form.errors }}</p>
+
+        <div class="flex gap-2 items-center">
+          <div
+            class="border border-white p-2 rounded-lg relative invalidStyle validStyle"
+          >
+            <input
+              type="file"
+              name="driver_profile_image"
+              id="driver_profile_image"
+              class="opacity-0 absolute"
+              required
+            />
+            <label
+              for="profilePicture"
+              class="flex flex-col items-center space-y-2"
+            >
+              <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
+              <span class="text-center text-[10px]">
+                UPLOAD <br />
+                PROFILE PICTURE
+              </span>
+            </label>
+          </div>
+
+          <div class="border border-white p-2 rounded-lg relative invalidStyle validStyle">
+            <input
+              type="file"
+              name="driver_license_image"
+              id="driver_license_image"
+              class="opacity-0 absolute"
+              required
+            />
+            <label
+              for="drivingLicence"
+              class="flex flex-col items-center space-y-2"
+            >
+              <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
+              <span class="text-center text-[10px]">
+                UPLOAD <br />
+                DRIVING LICINCE
+              </span>
+            </label>
+          </div>
+
+          <div class="border border-white p-2 rounded-lg relative invalidStyle validStyle">
+            <input
+              type="file"
+              name="driver_car_registration_image"
+              id="driver_car_registration_image"
+              class="opacity-0 absolute"
+              required
+            />
+            <label
+              for="carRegistration"
+              class="flex flex-col items-center space-y-2"
+            >
+              <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
+              <span class="text-center text-[10px]">
+                UPLOAD <br />
+                CAR REGISTRATION
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-white text-black py-2 rounded-sm shadow-md shadow-gray-500 w-[100%]"
+        >
+          SIGN UP
+        </button>
+        <span class="text-center"
+          >Already have an account?
+          <a href="{% url "login" %}" class="text-blue-500">Login</a></span
+        >
+      </form>
+    </section>
+
+{% endblock %}

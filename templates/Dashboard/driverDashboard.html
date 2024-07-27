@@ -1,0 +1,186 @@
+{% extends "dashboardBase.html" %}
+{% load static %}
+
+{% block main_container %}
+
+
+
+<div class="flex flex-col gap-4 bg-card-color p-6">
+  <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
+    <div class="space-y-2">
+      <h3>Current Parking Status</h3>
+      <!-- <span class="text-green-600">All Parking Activity</span> -->
+      <div class="flex gap-2 flex-wrap">
+        <p class="border p-2 rounded-md hover:bg-custom-Orange">
+          Exit current parking
+        </p>
+        <p class="border p-2 rounded-md hover:bg-custom-Orange">
+          Extend Time
+        </p>
+        <p class="border p-2 rounded-md hover:bg-custom-Orange">
+          Payment
+        </p>
+      </div>
+    </div>
+
+    <div class="flex gap-2 flex-wrap">
+      <fieldset
+        class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
+      >
+        <label for="date" class="flex gap-2 items-center">
+          <img
+            src="{% static '/library/svg/search.svg' %}"
+            alt="Search"
+            class="w-[1rem]"
+          />
+          <input
+            type="search"
+            name="date"
+            id="date"
+            class="border-collapse bg-transparent outline-none"
+            placeholder="Search by Date"
+          />
+        </label>
+      </fieldset>
+
+      <fieldset
+        class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
+      >
+        <label for="Status" class="flex gap-2 items-center">
+          Short by:
+          <select name="status" id="Status" class="bg-transparent">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </label>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="overflow-auto max-h-[500px] flex">
+    <table
+      class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
+    >
+      <thead class="sticky bg-custom-Orange top-0">
+        <tr>
+          <th>
+            Parking <br />
+            Slot Name
+          </th>
+          <th>Vehicle Type</th>
+          <th class="">
+            <img
+              src="{% static '/library/svg/cctv.svg' %}"
+              alt="CCTV"
+              class="w-[1rem] inline"
+            />
+            <span>CCTV</span>
+          </th>
+          <th>Date</th>
+          <th>Duration</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody class="">
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td>
+            <a
+              href="#"
+              class="text-green-500 border-b-2 hover:border-green-500"
+              >VIEW</a
+            >
+          </td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Active</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>2 Wheeler</td>
+          <td><span class="text-red-500">NOT AVAILABLE</span></td>
+          <td>10-7-2024</td>
+          <td>2:00pm-3:00pm</td>
+          <td>400 BDT</td>
+          <td class="statusCell">Inactive</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+

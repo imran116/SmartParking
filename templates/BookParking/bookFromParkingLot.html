@@ -1,0 +1,552 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+      <section class="flex justify-center">
+        <div
+          class="w-[90%] divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6"
+        >
+          <div class="flex flex-col gap-4 h-[80vh] w-[100%]">
+            <h2>Single Parking Lot</h2>
+            <div
+              class="flex flex-col gap-4 h-[100%] overflow-y-auto no-scrollbar overflow-x-hidden rounded-lg justify-start"
+            >
+              <div class="flex gap-4">
+                <div
+                  class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
+                >
+                  <p>House/Socity Name: Asad Manjil</p>
+                  <p>Road No: #03</p>
+                  <p>Phone: 0140####799</p>
+                  <p>Cost: 500 BDT/Hour</p>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <div class="w-[1rem] h-[1rem] bg-green-600"></div>
+                    <span>Available</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-[1rem] h-[1rem] bg-red-600"></div>
+                    <span>Occupied</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
+                    <span>Available In Next 20 Minute</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <h3>Find Parking Slots</h3>
+                <form action="#" class="flex flex-wrap gap-2 items-end">
+                  <div class="flex flex-col space-y-2">
+                    <label for="from"> Star From </label>
+
+                    <input
+                      type="time"
+                      name="from"
+                      id="from"
+                      placeholder="Enter Time"
+                      value=""
+                      class="border-collapse bg-white p-2 outline-none rounded-md text-black"
+                      required
+                    />
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <label for="to"> End At </label>
+
+                    <input
+                      type="time"
+                      name="to"
+                      id="to"
+                      placeholder="Enter Time"
+                      value=""
+                      class="border-collapse bg-white p-2 outline-none rounded-md text-black"
+                      required
+                    />
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <label for="date"> Date </label>
+
+                    <input
+                      type="date"
+                      name="date"
+                      id="date"
+                      placeholder="Enter Date"
+                      value=""
+                      class="border-collapse bg-white p-2 outline-none rounded-md text-black"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="bg-custom-Orange h-[3rem] w-[4rem] rounded-md hover:scale-[1.01]"
+                  >
+                    Find
+                  </button>
+                </form>
+
+                <span>Total cost: <b>1500</b> BDT</span>
+
+                <div
+                  class="space-y-3 bg-custom-Orange rounded-md p-4 fixed top-[30%] left-[25%] hidden bookingCard"
+                >
+                  <img
+                    onclick="showBookingCard(this)"
+                    src="{% static '/library/svg/exit.svg' %}"
+                    alt="Exit"
+                    class="w-[3rem] mx-auto mb-4 bookingCardToggler"
+                  />
+                  <span class="block"
+                    >Parking Slot: <b class="slectedSlotName"></b
+                  ></span>
+                  <span class="block">Duration: 3 Hours</span>
+                  <span class="block">Total Cost: 1500 BDT</span>
+                  <a href="{% url "socityDashboard" %}">
+                    <button
+                      class="p-[4px] bg-Custom-Transparent rounded-md w-[100%]"
+                    >
+                      Book
+                    </button>
+                  </a>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A1"
+                    value="available"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A1
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A3"
+                    value="soon"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A3
+                  </button>
+                  <button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2</button
+                  ><button
+                    onclick="creatCard(this)"
+                    name="A2"
+                    value="occupied"
+                    class="p-4 rounded-lg parkingSlot"
+                  >
+                    A2
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4 justify-center items-center">
+            <h2>Parking Lot's locations</h2>
+            <img
+              src="{% static '/library/logoAndImages/licationInMap.png' %}"
+              alt="Socity locations"
+              class="h-[100%]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- main Section starts here -->
+
+    <script>
+      {% comment %} const parkingSlots = document.querySelectorAll(".parkingSlot");
+      parkingSlots.forEach((eachParkingSlot) => {
+        if (eachParkingSlot.value == "available") {
+          eachParkingSlot.classList.add("bg-green-600");
+        } else if (eachParkingSlot.value == "soon") {
+          eachParkingSlot.classList.add("bg-yellow-500");
+          eachParkingSlot.setAttribute("disabled", true);
+        } else {
+          eachParkingSlot.classList.add("bg-red-600");
+          eachParkingSlot.setAttribute("disabled", true);
+        }
+      }); {% endcomment %}
+
+      function creatCard(e) {
+        document.querySelector(".slectedSlotName").innerHTML = `${e.name}`;
+        showBookingCard(this);
+      }
+      function showBookingCard(e) {
+        document.querySelector(".bookingCard").classList.toggle("hidden");
+      }
+    </script>
+
+{% endblock %}
+

@@ -1,0 +1,105 @@
+{% extends "dashboardBase.html" %}
+{% load static %}
+
+{% block main_container %}
+
+<form action="#" class="flex flex-col gap-6">
+  <label class="flex flex-col gap-2">
+    Owner Username
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Owner Phone Number
+    <input
+      type="text"
+      name="phone"
+      id="phone"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Owner Email
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Password
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <label class="flex flex-col gap-2">
+    Confirm Password
+    <input
+      type="password"
+      name="confirmPassword"
+      id="confirmPassword"
+      placeholder="Type here.."
+      class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+      required
+    />
+  </label>
+
+  <div class="flex gap-2">
+    <div
+      class="border border-white p-2 rounded-lg relative invalidStyle validStyle"
+    >
+      <input
+        type="file"
+        name="profilePicture"
+        id="profilePicture"
+        class="opacity-0 absolute"
+        required
+      />
+      <label
+        for="profilePicture"
+        class="flex flex-col items-center space-y-2"
+      >
+        <img
+          src="{% static '/library/svg/upload.svg' %}"
+          alt=""
+          class="w-[1.2rem]"
+        />
+        <span class="text-center text-[10px]">
+          UPLOAD <br />
+          PROFILE PICTURE
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="bg-custom-Orange border-collapse outline-none max-w-[200px] p-2 rounded-md hover:scale-[1.01]"
+  >
+    Creat/Add
+  </button>
+</form>
+
+{% endblock %}
+
+

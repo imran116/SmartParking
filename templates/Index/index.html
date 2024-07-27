@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+
+      <section class="hero">
+        <div
+          class="heroWrapper bg-cover bg-no-repeat h-[80svh] bg-center flex flex-col justify-center gap-14 items-center"
+          style="background-image: url('{% static 'library/logoAndImages/heroImage.jpg' %}')"
+        >
+          <div class="userTypes flex flex-col items-center gap-4">
+            <h3>Register As</h3>
+            <div class="flex flex-wrap gap-2">
+              <a
+                href="{% url "driverRegistration" %}"
+                class="normalButton bg-custom-Orange"
+                >Driver</a
+              >
+              <a
+                href="{% url "ownerRegistration" %}"
+                class="normalButton bg-custom-Orange"
+                >Owner</a
+              >
+              <a
+                href="{% url "caretakerRegistration" %}"
+                class="normalButton bg-custom-Orange"
+                >Caretaker</a
+              >
+              <a
+                href="{% url "socityRegistration" %}"
+                class="normalButton bg-custom-Orange"
+                >Commercial</a
+              >
+              <a
+                href="{% url "socityRegistration" %}"
+                class="normalButton bg-custom-Orange"
+                >Socity</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col space-y-4 justify-center items-center">
+            <div class="flex flex-wrap gap-3 justify-center">
+              <fieldset class="bg-Custom-Transparent p-3 w-[250px] rounded-xl">
+                <select
+                  name="parkingType"
+                  id="parkingType"
+                  class="bg-Custom-Transparent rounded-lg w-[200px] border-collapse outline-none"
+                >
+                  <option value="" selected disabled>
+                    Select Parking Type
+                  </option>
+                  <option value="commercial">Commercial</option>
+                  <option value="residential">Residential</option>
+                </select>
+              </fieldset>
+
+              <fieldset class="bg-Custom-Transparent p-3 w-[250px] rounded-xl">
+                <label for="searchedlocation" class="flex space-x-4">
+                  <img
+                    src="{% static '/library/svg/search.svg' %}"
+                    alt="search"
+                    class="w-[1rem]"
+                  />
+                  <select
+                    name="searchedlocation"
+                    id="searchedlocation"
+                    class="bg-Custom-Transparent rounded-lg w-[200px] border-collapse outline-none"
+                  >
+                    <option value="" selected disabled>
+                      Select Location Here
+                    </option>
+                    <option value="Farmgate">Farmgate</option>
+                    <option value="Uttara">Uttara</option>
+                    <option value="Dhanmondi">Farmgate</option>
+                    <option value="Mirpur-1">Farmgate</option>
+                    <option value="Malibagh">Farmgate</option>
+                  </select>
+                </label>
+              </fieldset>
+
+              <fieldset class="bg-Custom-Transparent p-3 w-[250px] rounded-xl">
+                <label for="parkingTime" class="space-x-2 flex">
+                  <span>Parking Time</span>
+
+                  <input
+                    type="time"
+                    name="parkingTime"
+                    id="parkingTime"
+                    class="rounded-lg text-black w-auto border-collapse outline-none"
+                    placeholder="Parking Time"
+                  />
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="flex space-x-5">
+              <a href="{% url "availableParkingLots" %}" class="heroButton bg-green-600">
+                <span
+                  >All Available <br />
+                  Parking Lots</span
+                >
+                <p class="text-[16px]">50</p></a
+              >
+
+              <a
+                href="{% url "availableParkingLots" %}"
+                class="heroButton bg-custom-Orange"
+              >
+                <span>Available Parking <br />Lots in Farmgate</span>
+                <p class="text-[16px]">10</p></a
+              >
+            </div>
+
+            <div class="heroButton bg-yellow-500">
+              <span>Available Parking Lots <br />in next 30 Minutes</span>
+              <p class="text-[16px]">7</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex justify-center">
+        <div class="w-[90%] xl:w-[70%] max-w-[1090px] my-[4rem] space-y-8">
+          <h2>What we provide?</h2>
+          <div class="flex flex-wrap justify-evenly gap-8">
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">CCTV Surveillance</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Reservation System</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Live Chat</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Security Guards</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">
+                Real-time Availability
+              </h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">
+                Notifications and Alerts
+              </h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Digital Payment</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Google Map</h3>
+            </a>
+            <a href="#">
+              <h3 class="serviceButton bg-card-color">Customer Support</h3>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+{% endblock %}
+
+
