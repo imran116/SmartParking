@@ -23,3 +23,9 @@ class RegisterDriver(models.Model):
         return self.user.username
 
 # Register Driver Model Code  End
+
+
+# Register Caretaker Model Code  Start
+
+
+# Register Caretaker Model Code  End
