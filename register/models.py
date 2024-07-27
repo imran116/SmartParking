@@ -1,12 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-
-
-# Create your models here.
-
-# Register Driver Model Code Start
-
+# Register Driver Model
 class RegisterDriver(models.Model):
     VEHICLE_CHOICES = [
         ('car', 'Car'),
@@ -23,16 +19,9 @@ class RegisterDriver(models.Model):
     def __str__(self):
         return self.user.username
 
-# Register Driver Model Code  End
+# Register Caretaker Model (if needed)
 
-
-# Register Caretaker Model Code  Start
-
-
-# Register Caretaker Model Code  End
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+# SocietyUser Model
 class SocietyUserManager(BaseUserManager):
     def create_user(self, email, username, phone, password=None):
         if not email:
