@@ -2,11 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+# <<<<<<< HEAD
 
 # Create your models here.
 
 # Register Driver Model Code Start
 
+# =======
+# # Register Driver Model
+# >>>>>>> fd329138e9003b28395fa9c70c9cc692674b6195
 class RegisterDriver(models.Model):
     VEHICLE_CHOICES = [
         ('car', 'Car'),
@@ -23,6 +27,7 @@ class RegisterDriver(models.Model):
     def __str__(self):
         return self.user.username
 
+# <<<<<<< HEAD
 
 # Register Driver Model Code  End
 
@@ -39,7 +44,11 @@ class RegisterCaretaker(models.Model):
 
 # Register Caretaker Model Code  End
 
+# =======
+# # Register Caretaker Model (if needed)
+# >>>>>>> fd329138e9003b28395fa9c70c9cc692674b6195
 
+# SocietyUser Model
 class SocietyUserManager(BaseUserManager):
     def create_user(self, email, username, phone, password=None):
         if not email:
