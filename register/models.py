@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 # Create your models here.
@@ -23,15 +23,22 @@ class RegisterDriver(models.Model):
     def __str__(self):
         return self.user.username
 
+
 # Register Driver Model Code  End
 
 
 # Register Caretaker Model Code  Start
+class RegisterCaretaker(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    caretaker_mobile_number = models.CharField(max_length=20)
+    caretaker_profile_image = models.ImageField(upload_to='caretaker_profile/')
+    caretaker_nid_image = models.ImageField(upload_to='caretaker_nid/')
 
+    def __str__(self):
+        return self.user.username
 
 # Register Caretaker Model Code  End
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
 
 class SocietyUserManager(BaseUserManager):
     def create_user(self, email, username, phone, password=None):
@@ -60,6 +67,7 @@ class SocietyUserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
+
 
 class SocietyUser(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True)

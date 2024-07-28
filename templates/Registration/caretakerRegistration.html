@@ -4,10 +4,12 @@
 
   <section class="w-[100%] h-[100%] flex items-center my-10">
   <form
-    action="#"
-    method="post"
+    action="{% url 'register:caretaker-registration' %}"
+    method="POST"
+    enctype="multipart/form-data"
     class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
   >
+      {% csrf_token %}
     <img src="{% static '/library/logoAndImages/car.png' %}" alt="" class="w-[8rem] m-auto" />
     <h3>SIGN UP HERE AS A CARETAKER</h3>
 
@@ -23,6 +25,7 @@
         name="username"
         id="username"
         placeholder="USERNAME"
+        value="{{ username }}"
         class="border-collapse bg-transparent outline-none"
         required
       />
@@ -37,9 +40,10 @@
 
       <input
         type="text"
-        name="Phone"
-        id="Phone"
+        name="caretaker_mobile_number"
+        id="caretaker_mobile_number"
         placeholder="PHONE"
+        value="{{ caretaker_mobile_number }}"
         class="border-collapse bg-transparent outline-none"
         required
       />
@@ -81,6 +85,10 @@
         class="border-collapse bg-transparent outline-none required:"
       />
     </fieldset>
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+
 
     <div class="flex gap-2 items-center">
       <div
@@ -88,8 +96,8 @@
       >
         <input
           type="file"
-          name="profilePicture"
-          id="profilePicture"
+          name="caretaker_profile_image"
+          id="caretaker_profile_image"
           class="opacity-0 absolute"
           required
         />
@@ -110,8 +118,8 @@
       >
         <input
           type="file"
-          name="nidCard"
-          id="nidCard"
+          name="caretaker_nid_image"
+          id="caretaker_nid_image"
           class="opacity-0 absolute"
           required
         />

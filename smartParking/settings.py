@@ -2,9 +2,9 @@
 import os
 
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/5.0/ref/settings/
-"""
+# For the full list of settings and their values, see
+# https://docs.djangoproject.com/en/5.0/ref/settings/
+
 import os 
 from pathlib import Path
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homeApp',
     'dashboardApp',
-    'register',
     'register',
 ]
 

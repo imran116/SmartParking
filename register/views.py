@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import RegisterDriver
+from .models import RegisterDriver, RegisterCaretaker
 
 
 # Register Driver Views Code Start
@@ -17,19 +17,19 @@ def register_driver(request):
         password = request.POST.get('password')
         confirmPassword = request.POST.get('confirmPassword')
 
-        db_exits_username = User.objects.get(username=username)
+        db_exits_username = User.objects.filter(username=username)
         if db_exits_username:
             messages.error(request, "This username already used")
-            return call_pages(request, username, driver_phone_number, vehicle_type)
+            return call_driver_pages(request, username, driver_phone_number, vehicle_type)
 
-        db_exits_phone = RegisterDriver.objects.get(driver_phone_number=driver_phone_number)
+        db_exits_phone = RegisterDriver.objects.filter(driver_phone_number=driver_phone_number)
         if db_exits_phone:
             messages.error(request, "This phone number already used")
-            return call_pages(request, username, driver_phone_number, vehicle_type)
+            return call_driver_pages(request, username, driver_phone_number, vehicle_type)
 
         if password != confirmPassword:
             messages.error(request, "Confirm password do not match.")
-            return call_pages(request, username, driver_phone_number, vehicle_type)
+            return call_driver_pages(request, username, driver_phone_number, vehicle_type)
 
         user = User.objects.create_user(username=username, password=password)
 
@@ -45,23 +45,66 @@ def register_driver(request):
     return render(request, 'Registration/driverRegistration.html')
 
 
-def call_pages(request, username, driver_phone_number, vehicle_type):
+def call_driver_pages(request, username, driver_phone_number, vehicle_type):
     return render(request, 'Registration/driverRegistration.html', {
         'username': username,
         'driver_phone_number': driver_phone_number,
         'vehicle_type': vehicle_type,
     })
 
+
 # Register Driver Views Code End
 
-
 # Register Caretaker Views Code Start
+def register_caretaker(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        caretaker_mobile_number = request.POST.get('caretaker_mobile_number')
+        caretaker_profile_image = request.FILES.get('caretaker_profile_image')
+        caretaker_nid_image = request.FILES.get('caretaker_nid_image')
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('confirmPassword')
+
+        db_exists_username = User.objects.filter(username=username)
+        if db_exists_username:
+            messages.error(request, "This username already used.")
+            return call_caretaker_pages(request, username, caretaker_mobile_number)
+
+        db_exists_mobile = RegisterCaretaker.objects.filter(caretaker_mobile_number=caretaker_mobile_number)
+        if db_exists_mobile:
+            messages.error(request, "This mobile number already used")
+            return call_caretaker_pages(request, username, caretaker_mobile_number)
+
+        if password != confirmPassword:
+            messages.error(request, "Confirm Password do not match")
+            return call_caretaker_pages(request, username, caretaker_mobile_number)
+
+        user = User.objects.create_user(username=username, password=password)
+
+        RegisterCaretaker.objects.create(
+            user=user,
+            caretaker_mobile_number=caretaker_mobile_number,
+            caretaker_profile_image=caretaker_profile_image,
+            caretaker_nid_image=caretaker_nid_image
+
+        )
+        return redirect('caretakerDashboard')
+    return render(request, 'Registration/caretakerRegistration.html')
+
+
+def call_caretaker_pages(request, username, caretaker_mobile_number):
+    return render(request, 'Registration/caretakerRegistration.html', {
+        'username': username,
+        'caretaker_mobile_number': caretaker_mobile_number
+    })
 
 
 # Register Caretaker Views Code End
-# register/views.py
+
+
 from django.shortcuts import render, redirect
 from .forms import SocietyUserRegistrationForm
+
 
 def societyRegistration_view(request):
     if request.method == 'POST':
@@ -78,5 +121,3 @@ def societyRegistration_view(request):
         form = SocietyUserRegistrationForm()
 
     return render(request, 'Registration/socityRegistration.html', {'form': form})
-
-
