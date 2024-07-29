@@ -455,6 +455,8 @@
           </div>
 
             <!-- THESE BOXES ARE ONLY FOR driverDashboard -->
+            {% if request.ueer.is_authenticated and request.user.is_driver == 'Trueg'%}
+            {% endif %}
 
             <div class="flex flex-wrap gap-4 justify-start">
             

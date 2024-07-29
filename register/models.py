@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+
 # <<<<<<< HEAD
 
 # Create your models here.
@@ -23,9 +24,11 @@ class RegisterDriver(models.Model):
     driver_profile_image = models.ImageField(upload_to='driver_profile/')
     driver_license_image = models.ImageField(upload_to='driver_license/')
     driver_car_registration_image = models.ImageField(upload_to='driver_registration/')
+    is_driver = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user.username
+
 
 # <<<<<<< HEAD
 
@@ -41,6 +44,7 @@ class RegisterCaretaker(models.Model):
 
     def __str__(self):
         return self.user.username
+
 
 # Register Caretaker Model Code  End
 
@@ -80,7 +84,7 @@ class SocietyUserManager(BaseUserManager):
 
 class SocietyUser(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, unique=True)
     email = models.EmailField(max_length=60, unique=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     society_house_name = models.CharField(max_length=100)
@@ -104,3 +108,12 @@ class SocietyUser(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_admin
+
+# User Type Model Code Start
+
+# class UserType(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     user_mobile_number = models.CharField(max_length=20)
+#     user_type = models.CharField(max_length=20)
+
+# User Type Model Code End

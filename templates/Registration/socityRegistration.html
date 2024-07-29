@@ -27,7 +27,7 @@
         <input type="radio" name="registerType" id="society" value="society"> Society
       </label>
     </div>
-
+ {{ form.errors }}
     <fieldset class="border border-white flex p-2 space-x-2 rounded-sm w-[100%]">
       <label for="username">
         <img src="{% static 'library/svg/person.svg' %}" alt="Username" class="w-[1.3rem]" />
@@ -90,7 +90,7 @@
     <button type="submit" class="bg-white text-black py-2 rounded-sm shadow-md shadow-gray-500 w-[100%]">
       SIGN UP
     </button>
-    <span class="text-center">Already have an account? <a href="{% url 'login' %}" class="text-blue-500">Login</a></span>
+    <span class="text-center">Already have an account? <a href="{% url 'loginApp:login' %}" class="text-blue-500">Login</a></span>
   </form>
 </section>
 
