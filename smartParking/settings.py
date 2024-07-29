@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'homeApp',
     'dashboardApp',
     'register',
+    'loginApp',
 ]
 
 MIDDLEWARE = [

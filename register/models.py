@@ -87,7 +87,7 @@ class SocietyUser(AbstractBaseUser):
     address = models.CharField(max_length=255)
 
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
+    last_login = models.DateTimeField(verbose_name='last loginApp', auto_now=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 

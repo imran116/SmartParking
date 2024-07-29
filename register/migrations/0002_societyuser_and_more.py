@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('society_house_name', models.CharField(max_length=100)),
                 ('address', models.CharField(max_length=255)),
                 ('date_joined', models.DateTimeField(auto_now_add=True, verbose_name='date joined')),
-                ('last_login', models.DateTimeField(auto_now=True, verbose_name='last login')),
+                ('last_login', models.DateTimeField(auto_now=True, verbose_name='last loginApp')),
                 ('is_active', models.BooleanField(default=True)),
                 ('is_admin', models.BooleanField(default=False)),
             ],
