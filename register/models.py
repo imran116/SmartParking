@@ -45,7 +45,22 @@ class RegisterCaretaker(models.Model):
 # Register Caretaker Model Code  End
 
 # =======
-# # Register Caretaker Model (if needed)
+# Register owner Model (starts)
+class SpaceOwner(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner_mobile_number = models.CharField(max_length=20)
+    owner_email_address = models.CharField(max_length=20)
+    owner_profile_image = models.ImageField(upload_to='E:\SmartParking\media\profile_pictures')
+    owner_society_name = models.CharField(max_length=20)
+    owner_address = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.user.username
+
+
+
+
+# # Register owner Model (ends)
 # >>>>>>> fd329138e9003b28395fa9c70c9cc692674b6195
 
 # SocietyUser Model
@@ -79,6 +94,7 @@ class SocietyUserManager(BaseUserManager):
 
 
 class SocietyUser(AbstractBaseUser):
+    # user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True)
     username = models.CharField(max_length=30, unique=True)
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=60, unique=True)

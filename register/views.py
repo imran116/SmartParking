@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import RegisterDriver, RegisterCaretaker
+from .models import RegisterDriver, RegisterCaretaker,SpaceOwner
 
 
 # Register Driver Views Code Start
@@ -100,7 +100,60 @@ def call_caretaker_pages(request, username, caretaker_mobile_number):
 
 
 # Register Caretaker Views Code End
+#register space owner code starts
 
+
+def spaceowner(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        owner_mobile_number = request.POST.get('owner_mobile_number')
+        owner_email_address =request.POST.get('owner_email_address')
+        owner_profile_image = request.FILES.get('owner_profile_image')
+        owner_society_name= request.POST.get('owner_society_name')
+        owner_address= request.POST.get('owner_address')
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('confirmPassword')
+
+        db_exists_username = User.objects.filter(username=username)
+        if db_exists_username:
+            messages.error(request, "This username already used.")
+            return call_owner_pages(request, username, owner_mobile_number)
+
+        db_exists_mobile = SpaceOwner.objects.filter(owner_mobile_number=owner_mobile_number)
+        if db_exists_mobile:
+            messages.error(request, "This mobile number already used")
+            return call_owner_pages(request, username, owner_mobile_number)
+
+        if password != confirmPassword:
+            messages.error(request, "Confirm Password do not match")
+            return call_owner_pages(request, username, owner_mobile_number)
+
+        user = User.objects.create_user(username=username, password=password)
+
+        SpaceOwner.objects.create(
+            user=user,
+            owner_mobile_number=owner_mobile_number,
+            owner_email_address=owner_email_address,
+            owner_profile_image=owner_profile_image,
+            owner_society_name=owner_society_name,
+            owner_address= owner_address
+
+        )
+        return redirect('ownerDashboard')
+    return render(request, 'Registration/ownerRegistration.html')
+
+
+def call_owner_pages(request, username, owner_mobile_number):
+    return render(request, 'Registration/ownerRegistration.html', {
+        'username': username,
+        'owner_mobile_number': owner_mobile_number
+    })
+
+
+
+
+
+#register space owner code ends
 
 from django.shortcuts import render, redirect
 from .forms import SocietyUserRegistrationForm
@@ -112,7 +165,9 @@ def societyRegistration_view(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
+
             user.save()
+
             print("User registered successfully: ", user)  # Debug print
             return redirect('socityDashboard')  # Adjust redirection as needed
         else:
