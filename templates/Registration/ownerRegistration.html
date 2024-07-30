@@ -6,11 +6,12 @@
       class="text-white w-[100%] h-[100%] flex items-center my-10"
     >
       <form
-        action="#"
+        action="{% url 'register:owner-registration' %}"
         method="post"
+        enctype="multipart/form-data"
         class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
       >
-
+      {% csrf_token %}
       <img src="{% static '/library/logoAndImages/car.png' %}" alt="" class="w-[8rem] m-auto">
        <h2>SIGN UP HERE AS A OWNER</h2>
 
@@ -28,6 +29,7 @@
             name="username"
             id="username"
             placeholder="USERNAME"
+            value="{{ username }}"
             class="border-collapse bg-transparent outline-none text-white" required
           />
         </fieldset>
@@ -43,9 +45,10 @@
 
           <input
             type="text"
-            name="Phone"
-            id="Phone"
+            name="owner_mobile_number"
+            id="owner_mobile_number"
             placeholder="PHONE"
+            value="{{ owner_mobile_number }}"
             class="border-collapse bg-transparent outline-none text-white" required
           />
         </fieldset>
@@ -61,9 +64,10 @@
   
             <input
               type="text"
-              name="email"
-              id="email"
+              name="owner_email_address"
+              id="owner_email_addressemail"
               placeholder="EMAIL"
+              value="{{ owner_email_address }}"
               class="border-collapse bg-transparent outline-none text-white" required
             />
           </fieldset>
@@ -104,18 +108,21 @@
             class="border-collapse bg-transparent outline-none text-white required:"
           />
         </fieldset>
-
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+  
         <div class="flex gap-2 items-center">
           <div class="border border-white p-2 rounded-lg relative invalidStyle validStyle">
             <input
               type="file"
-              name="profilePicture"
-              id="profilePicture"
+              name="owner_profile_image"
+              id="owner_profile_image"
               class="opacity-0 absolute"
               required
             />
             <label
-              for="profilePicture"
+              for="owner_profile_image"
               class="flex flex-col items-center space-y-2"
             >
               <img src="{% static '/library/svg/upload.svg' %}" alt="" class="w-[1.2rem]" />
@@ -138,10 +145,11 @@
           </label>
 
           <input
-            type="password"
-            name="socity/houseName"
-            id="socity/houseName"
+            type="text"
+            name="owner_society_name"
+            id="owner_society_name"
             placeholder="SOCITY/HOUSE NAME"
+            value="{{ owner_society_name }}"
             class="border-collapse bg-transparent outline-none text-white required:"
           />
         </fieldset>
@@ -156,10 +164,11 @@
           </label>
 
           <input
-            type="password"
-            name="address"
-            id="address"
+            type="text"
+            name="owner_address"
+            id="owner_address"
             placeholder="ADDRESS"
+            value="{{ owner_address }}"
             class="border-collapse bg-transparent outline-none text-white required:"
           />
         </fieldset>
