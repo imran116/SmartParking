@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from register.models import SocietyUser,RegisterDriver,RegisterCaretaker
+from register.models import SocietyUser,RegisterDriver,RegisterCaretaker, SpaceOwner
 
 
 def login_view(request):
@@ -23,6 +23,8 @@ def user_login_view(request):
                 return redirect('caretakerDashboard')
             # elif SocietyUser.objects.filter(user=request.user).exists():
             #     return redirect('socityDashboard')
+            elif SpaceOwner.objects.filter(user=request.user).exists():
+                return redirect('ownerDashboard')
             else:
                 messages.error(request, "User not found.")
         else:

@@ -2,212 +2,212 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socity Dashboard</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Society Dashboard</title>
     <script src="{% static '/javascript/index.js' %}" defer></script>
     <script src="{% static '/javascript/dashboard.js' %}" defer></script>
-    <link rel="stylesheet" href="{% static '/css/output.css' %}" />
-  </head>
+    <link rel="stylesheet" href="{% static '/css/output.css' %}"/>
+</head>
 
-  <body class="">
-    <main class="flex gap-1 md:gap-4 max-w-[1500px] h-[100svh]">
-      <!-- sidebar -->
-      <div
-        class="sidebar duration-[1s] z-50 h-[100%] w-fit inline-flex flex-col gap-4 justify-between py-[1rem] px-[5px] lg:p-[1rem] bg-custom-Orange items-center"
-      >
+<body class="">
+<main class="flex gap-1 md:gap-4 max-w-[1500px] h-[100svh]">
+    <!-- sidebar -->
+    <div
+            class="sidebar duration-[1s] z-50 h-[100%] w-fit inline-flex flex-col gap-4 justify-between py-[1rem] px-[5px] lg:p-[1rem] bg-custom-Orange items-center"
+    >
         <a href="{% url "home" %}">
-          <img
-            src="{% static '/library/logoAndImages/parking.png' %}"
-            alt="CAR PARKING"
-            class="hidden w-[200px] lg:block"
-          />
-          <img
-            src="{% static '/library/logoAndImages/car.png' %}"
-            alt="Home"
-            class="w-[4rem] lg:hidden"
-          />
+            <img
+                    src="{% static '/library/logoAndImages/parking.png' %}"
+                    alt="CAR PARKING"
+                    class="hidden w-[200px] lg:block"
+            />
+            <img
+                    src="{% static '/library/logoAndImages/car.png' %}"
+                    alt="Home"
+                    class="w-[4rem] lg:hidden"
+            />
         </a>
 
         <div class="sidebarOptions pb-10 lg:pb-0 flex flex-col gap-4">
-          <div class="lg:hidden rounded-md p-2">
-            <img
-              src="{% static '/library/svg/exit.svg' %}"
-              alt="Close"
-              class="w-[2rem]  m-auto sideBarCloser sideBarTogglerEffect sideBarToggler"
-            />
-            <img
-              src="{% static '/library/svg/open.svg' %}"
-              alt="Open"
-              class="w-[2rem] m-auto sideBarOpener sideBarToggler"
-            />
-          </div>
-
-          <a
-            href="{% url "socityDashboard" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent visited:bg-red-600 rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/dashboard.svg' %}"
-                alt="Dashboard"
-                class="w-[1.5rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Dashboard</span>
+            <div class="lg:hidden rounded-md p-2">
+                <img
+                        src="{% static '/library/svg/exit.svg' %}"
+                        alt="Close"
+                        class="w-[2rem]  m-auto sideBarCloser sideBarTogglerEffect sideBarToggler"
+                />
+                <img
+                        src="{% static '/library/svg/open.svg' %}"
+                        alt="Open"
+                        class="w-[2rem] m-auto sideBarOpener sideBarToggler"
+                />
             </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
 
-          <a
-            href="{% url "home" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/home.svg' %}"
-                alt="Home"
-                class="w-[1.2rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Home</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+            <a
+                    href="{% url "socityDashboard" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent visited:bg-red-600 rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img
+                            src="{% static '/library/svg/dashboard.svg' %}"
+                            alt="Dashboard"
+                            class="w-[1.5rem]"
+                    />
+                    <span class="targetedMenu duration-[1s] ">Dashboard</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
 
-          <a
-            href="{% url "dashboardBookFromParkingLot" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/booking.svg' %}"
-                alt="Book"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Book Parking</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+            <a
+                    href="{% url "home" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img
+                            src="{% static '/library/svg/home.svg' %}"
+                            alt="Home"
+                            class="w-[1.2rem]"
+                    />
+                    <span class="targetedMenu duration-[1s] ">Home</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
 
-          <a
-            href="{% url "dashboardAddSlotOwner" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/person.svg' %}"
-                alt="Add Slot Owner"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+            <a
+                    href="{% url "dashboardBookFromParkingLot" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img
+                            src="{% static '/library/svg/booking.svg' %}"
+                            alt="Book"
+                            class="w-[1rem]"
+                    />
+                    <span class="targetedMenu duration-[1s] ">Book Parking</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
 
-          <a
-            href="{% url "dashboardAddParkingSlot" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/add.svg' %}"
-                alt="Add Slot"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Add Parking Slot</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+{#            <a#}
+{#                    href="{% url "dashboardAddSlotOwner" %}"#}
+{#                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"#}
+{#            >#}
+{#                <div class="flex gap-2">#}
+{#                    <img#}
+{#                            src="{% static '/library/svg/person.svg' %}"#}
+{#                            alt="Add Slot Owner"#}
+{#                            class="w-[1rem]"#}
+{#                    />#}
+{#                    <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>#}
+{#                </div>#}
+{#                <img#}
+{#                        src="{% static '/library/svg/rightArrow.svg' %}"#}
+{#                        alt="GO"#}
+{#                        class="w-[1rem] targetedMenu duration-[1s] "#}
+{#                />#}
+{#            </a>#}
 
-          <a
-            href="{% url "dashboardAccount" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img
-                src="{% static '/library/svg/account.svg' %}"
-                alt="Account"
-                class="w-[1rem]"
-              />
-              <span class="targetedMenu duration-[1s] ">Account</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+            <a
+                    href="{% url "dashboardAddParkingSlot" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img
+                            src="{% static '/library/svg/add.svg' %}"
+                            alt="Add Slot"
+                            class="w-[1rem]"
+                    />
+                    <span class="targetedMenu duration-[1s] ">Add Parking Slot</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
 
-          <a
-            href="{% url "dashboardParkingMap" %}"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="{% static '/library/svg/map.svg' %}" alt="Map" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">Parking Map</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-          /></a>
+            <a
+                    href="{% url "dashboardAccount" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img
+                            src="{% static '/library/svg/account.svg' %}"
+                            alt="Account"
+                            class="w-[1rem]"
+                    />
+                    <span class="targetedMenu duration-[1s] ">Account</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
 
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="{% static '/library/svg/cctv.svg' %}" alt="CCTV" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">CCTV</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-          /></a>
+            <a
+                    href="{% url "dashboardParkingMap" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img src="{% static '/library/svg/map.svg' %}" alt="Map" class="w-[1rem]"/>
+                    <span class="targetedMenu duration-[1s] ">Parking Map</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                /></a>
 
-          <a
-            href="#"
-            class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
-          >
-            <div class="flex gap-2">
-              <img src="{% static '/library/svg/help.svg' %}" alt="Help" class="w-[1rem]" />
-              <span class="targetedMenu duration-[1s] ">Help</span>
-            </div>
-            <img
-              src="{% static '/library/svg/rightArrow.svg' %}"
-              alt="GO"
-              class="w-[1rem] targetedMenu duration-[1s] "
-            />
-          </a>
+            <a
+                    href="#"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img src="{% static '/library/svg/cctv.svg' %}" alt="CCTV" class="w-[1rem]"/>
+                    <span class="targetedMenu duration-[1s] ">CCTV</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                /></a>
+
+            <a
+                    href="#"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img src="{% static '/library/svg/help.svg' %}" alt="Help" class="w-[1rem]"/>
+                    <span class="targetedMenu duration-[1s] ">Help</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                />
+            </a>
         </div>
         <span class="text-[12px] targetedMenu duration-[1s] "
-          >Copyright and Developed © 2024 OS IT Solution Ltd</span
+        >Copyright and Developed © 2024 OS IT Solution Ltd</span
         >
-      </div>
+    </div>
 
-      <!-- toggled Sidebar -->
-      <!-- <div
+    <!-- toggled Sidebar -->
+    <!-- <div
         class="sidebar targetedSideBar duration-[1s] targetedSideBarEffect h-[100%] w-[280px] inline-flex flex-col justify-between p-[1rem] bg-custom-Orange items-center lg:hidden fixed z-40"
       >
         <a href="./index.html">
@@ -393,107 +393,104 @@
         >
       </div> -->
 
-      <!-- top Menubar -->
+    <!-- top Menubar -->
 
-      <div
-        class="flex flex-col p-[1rem] gap-4 w-[100%] h-[100%] overflow-y-scroll"
-      >
+    <div
+            class="flex flex-col p-[1rem] gap-4 w-[100%] h-[100%] overflow-y-scroll"
+    >
         <div class="flex flex-col gap-4">
-          <div class="flex justify-end md:justify-between items-center">
-            <h3 class="hidden md:block">Hello, {{ request.user.username }} 👋🏼</h3>
-            <div class="inline-flex gap-6 items-center">
-              <img
-                src="{% static '/library/svg/notification.svg' %}"
-                alt="Notifications"
-                class="w-[1.5rem]"
-              />
-              <a href="#">
-                <img
-                  src="{% static '/library/logoAndImages/profilePic.jpg' %}"
-                  alt="Profile"
-                  class="w-[2rem] rounded-full"
-                />
-              </a>
-              <div class="flex flex-col">
-                <b class="text-nowrap">{{ request.user.username }}</b>
-                <span>Society Owner</span>
-              </div>
+            <div class="flex justify-end md:justify-between items-center">
+                <h3 class="hidden md:block">Hello, {{ request.user.username }} 👋🏼</h3>
+                <div class="inline-flex gap-6 items-center">
+                    <img
+                            src="{% static '/library/svg/notification.svg' %}"
+                            alt="Notifications"
+                            class="w-[1.5rem]"
+                    />
+                    <a href="#">
+                        <img
+                                src="{% static '/library/logoAndImages/profilePic.jpg' %}"
+                                alt="Profile"
+                                class="w-[2rem] rounded-full"
+                        />
+                    </a>
+                    <div class="flex flex-col">
+                        <b class="text-nowrap">{{ request.user.username }}</b>
+                        <span>Society Owner</span>
+                    </div>
+                </div>
             </div>
-          </div>
 
-           <!-- FROM HERE, WE HAVE TO CHECK USER Dashboard TYPE AND THEN USE IT IN IF ELSE CONDITION TO ONLY RENDER THE BOXES OF THAT PARTICULAR Dashboard -->
+            <!-- FROM HERE, WE HAVE TO CHECK USER Dashboard TYPE AND THEN USE IT IN IF ELSE CONDITION TO ONLY RENDER THE BOXES OF THAT PARTICULAR Dashboard -->
 
             <!-- THESE BOXES ARE ONLY FOR socityDashboard -->
 
-          <div class="flex flex-wrap gap-4 justify-start">
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Available <br />
-                Parking Space
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Occupied <br />
-                Parking Space
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>
-                Available In<br />
-                Next 20 Minutes
-              </p>
-              <h3 class="text-custom-Orange">30</h3>
-            </div>
+            <div class="flex flex-wrap gap-4 justify-start">
+                <div class="text-center p-2 bg-card-color rounded-md">
+                    <p>
+                        Available <br/>
+                        Parking Space
+                    </p>
+                    <h3 class="text-custom-Orange">30</h3>
+                </div>
+                <div class="text-center p-2 bg-card-color rounded-md">
+                    <p>
+                        Occupied <br/>
+                        Parking Space
+                    </p>
+                    <h3 class="text-custom-Orange">30</h3>
+                </div>
+                <div class="text-center p-2 bg-card-color rounded-md">
+                    <p>
+                        Available In<br/>
+                        Next 20 Minutes
+                    </p>
+                    <h3 class="text-custom-Orange">30</h3>
+                </div>
 
-            <div class="text-center p-2 bg-card-color rounded-md">
-              <p>Total Earning</p>
-              <h3 class="text-custom-Orange">5000/BDT</h3>
+                <div class="text-center p-2 bg-card-color rounded-md">
+                    <p>Total Earning</p>
+                    <h3 class="text-custom-Orange">5000/BDT</h3>
+                </div>
             </div>
-          </div>
 
             <!-- THESE BOXES ARE ONLY FOR driverDashboard -->
-            {% if request.ueer.is_authenticated and request.user.is_driver == 'Trueg'%}
-            {% endif %}
-
             <div class="flex flex-wrap gap-4 justify-start">
-            
-              <div
-                class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-              >
-                <p>Total Time</p>
-                <h3 class="text-custom-Orange">00:30</h3>
-              </div>
-            
-              <div
-                class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-              >
-                <p>Total Bill</p>
-                <h3 class="text-custom-Orange">300 ৳</h3>
-              </div>
-            
-              <div
-                class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-              >
-                <p>Balance</p>
-                <h3 class="text-custom-Orange">5000 ৳</h3>
-              </div>
+
+                <div
+                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
+                >
+                    <p>Total Time</p>
+                    <h3 class="text-custom-Orange">00:30</h3>
+                </div>
+
+                <div
+                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
+                >
+                    <p>Total Bill</p>
+                    <h3 class="text-custom-Orange">300 ৳</h3>
+                </div>
+
+                <div
+                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
+                >
+                    <p>Balance</p>
+                    <h3 class="text-custom-Orange">5000 ৳</h3>
+                </div>
             </div>
+
 
         </div>
 
         <!-- Content -->
-
         {% block main_container %}
-        
+
         {% endblock %}
 
 
-      </div>
-    </main>
+    </div>
+</main>
 
-    <script></script>
-  </body>
+<script></script>
+</body>
 </html>

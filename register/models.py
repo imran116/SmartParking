@@ -3,15 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-# <<<<<<< HEAD
-
-# Create your models here.
-
 # Register Driver Model Code Start
 
-# =======
-# # Register Driver Model
-# >>>>>>> fd329138e9003b28395fa9c70c9cc692674b6195
+# Register Driver Model
 class RegisterDriver(models.Model):
     VEHICLE_CHOICES = [
         ('car', 'Car'),
@@ -30,8 +24,6 @@ class RegisterDriver(models.Model):
         return self.user.username
 
 
-# <<<<<<< HEAD
-
 # Register Driver Model Code  End
 
 
@@ -48,20 +40,17 @@ class RegisterCaretaker(models.Model):
 
 # Register Caretaker Model Code  End
 
-# =======
 # Register owner Model (starts)
 class SpaceOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     owner_mobile_number = models.CharField(max_length=20)
     owner_email_address = models.CharField(max_length=20)
-    owner_profile_image = models.ImageField(upload_to='E:\SmartParking\media\profile_pictures')
+    owner_profile_image = models.ImageField(upload_to='owner_profile/')
     owner_society_name = models.CharField(max_length=20)
     owner_address = models.CharField(max_length=20)
 
     def __str__(self):
         return self.user.username
-
-
 
 
 # # Register owner Model (ends)
