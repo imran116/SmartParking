@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import RegisterDriver, RegisterCaretaker,SpaceOwner
+from .models import RegisterDriver, RegisterCaretaker,SpaceOwner, Socity
 
 
 # Register Driver Views Code Start
@@ -155,24 +155,79 @@ def call_owner_pages(request, username, owner_mobile_number):
 
 #register space owner code ends
 
-from django.shortcuts import render, redirect
-from .forms import SocietyUserRegistrationForm
 
 
-def societyRegistration_view(request):
+#new reg society owner starts
+
+
+def societyRegistration(request):
     if request.method == 'POST':
+        username = request.POST.get('username')
+        print(username)
+        society_phone = request.POST.get('society_phone')
+        society_email =request.POST.get('society_email')
+        society_profile_picture = request.FILES.get('society_profile_picture')
+        society_house_name= request.POST.get('society_house_name')
+        s_address= request.POST.get('s_address')
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('confirmPassword')
 
-        form = SocietyUserRegistrationForm(request.POST, request.FILES)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
+        db_exists_username = User.objects.filter(username=username)
+        if db_exists_username:
+            messages.error(request, "This username already used.")
+            return call_society_pages(request, username, society_phone)
 
-            user.save()
-            print("User registered successfully: ", user)  # Debug print
-            return redirect('socityDashboard')  # Adjust redirection as needed
-        else:
-            print("Form is not valid: ", form.errors)  # Debug print
-    else:
-        form = SocietyUserRegistrationForm()
+        db_exists_mobile = Socity.objects.filter(society_phone=society_phone)
+        if db_exists_mobile:
+            messages.error(request, "This mobile number already used")
+            return call_society_pages(request, username, society_phone)
 
-    return render(request, 'Registration/socityRegistration.html', {'form': form})
+        if password != confirmPassword:
+            messages.error(request, "Confirm Password do not match")
+            return call_society_pages(request, username, society_phone)
+
+        user = User.objects.create_user(username=username, password=password)
+
+        Socity.objects.create(
+            user=user,
+            society_phone=society_phone,
+            society_email=society_email,
+            society_profile_picture=society_profile_picture,
+            society_house_name=society_house_name,
+            s_address= s_address
+
+        )
+        return redirect('socityDashboard')
+    return render(request, 'Registration/socityRegistration.html')
+
+
+def call_society_pages(request, username, society_phone):
+    return render(request, 'Registration/socityRegistration.html', {
+        'username': username,
+        'society_phone': society_phone
+    })
+
+
+#new reg society ends
+
+# from django.shortcuts import render, redirect
+# from .forms import SocietyUserRegistrationForm
+
+
+# def societyRegistration_view(request):
+#     if request.method == 'POST':
+#         form = SocietyUserRegistrationForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.set_password(form.cleaned_data['password'])
+
+#             user.save()
+
+#             print("User registered successfully: ", user)  # Debug print
+#             return redirect('socityDashboard')  # Adjust redirection as needed
+#         else:
+#             print("Form is not valid: ", form.errors)  # Debug print
+#     else:
+#         form = SocietyUserRegistrationForm()
+
+#     return render(request, 'Registration/socityRegistration.html', {'form': form})

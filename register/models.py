@@ -45,80 +45,106 @@ class SpaceOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     owner_mobile_number = models.CharField(max_length=20)
     owner_email_address = models.CharField(max_length=20)
-    owner_profile_image = models.ImageField(upload_to='owner_profile/')
+    owner_profile_image = models.ImageField(upload_to='E:\Sprofile_pictures')
     owner_society_name = models.CharField(max_length=20)
     owner_address = models.CharField(max_length=20)
 
     def __str__(self):
         return self.user.username
 
+#new society user registration begins
+
+
+
+
+class Socity(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    society_phone = models.CharField(max_length=20, default='0')
+    society_email = models.CharField(max_length=20, default='example@example.com')
+    society_profile_picture = models.ImageField(upload_to='society_profile_pictures/')
+    society_house_name = models.CharField(max_length=20)
+    s_address = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+# class SocietyUser(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE , blank= True, null=True)
+    
+#     society_phone = models.CharField(max_length=20)
+#     society_email = models.CharField(max_length=20)
+#     society_profile_picture = models.ImageField(upload_to='society_profile_pictures/')
+#     society_house_name = models.CharField(max_length=20)
+#     s_address = models.CharField(max_length=20, blank=True,null=True)
+
+#     def __str__(self):
+#         return self.user.username
+
+
+
+
+
+#new society user registration ends
+
+
 
 # # Register owner Model (ends)
 # >>>>>>> fd329138e9003b28395fa9c70c9cc692674b6195
 
 # SocietyUser Model
-class SocietyUserManager(BaseUserManager):
-    def create_user(self, email, username, phone, password=None):
-        if not email:
-            raise ValueError('Users must have an email address')
-        if not username:
-            raise ValueError('Users must have a username')
+# class SocietyUserManager(BaseUserManager):
+#     def create_user(self, email, username, phone, password=None):
+#         if not email:
+#             raise ValueError('Users must have an email address')
+#         if not username:
+#             raise ValueError('Users must have a username')
 
-        user = self.model(
-            email=self.normalize_email(email),
-            username=username,
-            phone=phone,
-        )
+#         user = self.model(
+#             email=self.normalize_email(email),
+#             username=username,
+#             phone=phone,
+#         )
 
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+#         user.set_password(password)
+#         user.save(using=self._db)
+#         return user
 
-    def create_superuser(self, email, username, phone, password=None):
-        user = self.create_user(
-            email,
-            username=username,
-            phone=phone,
-            password=password,
-        )
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
+#     def create_superuser(self, email, username, phone, password=None):
+#         user = self.create_user(
+#             email,
+#             username=username,
+#             phone=phone,
+#             password=password,
+#         )
+#         user.is_admin = True
+#         user.save(using=self._db)
+#         return user
 
 
-class SocietyUser(AbstractBaseUser):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True)
-    username = models.CharField(max_length=30, unique=True)
-    phone = models.CharField(max_length=15, unique=True)
-    email = models.EmailField(max_length=60, unique=True)
-    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
-    society_house_name = models.CharField(max_length=100)
-    address = models.CharField(max_length=255)
+# class SocietyUser(AbstractBaseUser):
+#     # user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True)
+#     username = models.CharField(max_length=30, unique=True)
+#     phone = models.CharField(max_length=15)
+#     email = models.EmailField(max_length=60, unique=True)
+#     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+#     society_house_name = models.CharField(max_length=100)
+#     address = models.CharField(max_length=255)
 
-    date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name='last loginApp', auto_now=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+#     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
+#     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
+#     is_active = models.BooleanField(default=True)
+#     is_admin = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'phone']
+#     USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = ['username', 'phone']
 
-    objects = SocietyUserManager()
+#     objects = SocietyUserManager()
 
-    def __str__(self):
-        return self.email
+#     def __str__(self):
+#         return self.email
 
-    def has_perm(self, perm, obj=None):
-        return self.is_admin
+#     def has_perm(self, perm, obj=None):
+#         return self.is_admin
 
-    def has_module_perms(self, app_label):
-        return self.is_admin
-
-# User Type Model Code Start
-
-# class UserType(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     user_mobile_number = models.CharField(max_length=20)
-#     user_type = models.CharField(max_length=20)
-
-# User Type Model Code End
+#     def has_module_perms(self, app_label):
+#         return self.is_admin
