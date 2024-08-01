@@ -5,10 +5,11 @@
       <!-- Login Form -->
       <section class="w-[100%] h-[100%] flex items-center my-10">
         <form
-          action=""
-          method="post"
+          action="{% url 'loginApp:society_login' %}"
+          method="POST"
           class="flex flex-col space-y-7 items-center m-auto bg-custom-Orange py-5 px-12 rounded-xl"
         >
+            {% csrf_token %}
           <img
             src="{% static '/library/logoAndImages/car.png' %}"
             alt=""
@@ -29,9 +30,9 @@
 
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="USERNAME"
+              name="phone"
+              id="phone"
+              placeholder="USERNAME / EMAIL"
               class="border-collapse bg-transparent outline-none"
               required
             />
@@ -57,6 +58,11 @@
               required
             />
           </fieldset>
+            {% for message in messages %}
+                {{ message }}
+
+            {% endfor %}
+
 
           <button
             type="submit"
