@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import SocietyUser, RegisterDriver  # Import RegisterDriver here
+from .models import Socity, RegisterDriver  # Import RegisterDriver here
 
 # Register your models here.
 # <<<<<<< HEAD
 from django.contrib import admin
-from .models import SocietyUser,RegisterDriver,RegisterCaretaker,SpaceOwner
+from .models import Socity,RegisterDriver,RegisterCaretaker,SpaceOwner
 
-admin.site.register(SocietyUser)
+admin.site.register(Socity)
 admin.site.register(SpaceOwner)
 
 admin.site.register(RegisterDriver)
