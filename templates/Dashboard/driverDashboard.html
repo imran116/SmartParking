@@ -6,6 +6,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Driver Dashboard</title>
+    <script src="https://kit.fontawesome.com/c476fc70a6.js" crossorigin="anonymous"></script>
     <script src="{% static '/javascript/index.js' %}" defer></script>
     <script src="{% static '/javascript/dashboard.js' %}" defer></script>
     <link rel="stylesheet" href="{% static '/css/output.css' %}"/>
@@ -418,9 +419,9 @@
                         <b class="text-nowrap">{{ request.user.username }}</b>
                         <span>Driver</span>
                     </div>
-
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff4d00;"></i></a>
-
+                    {% endif %}
                 </div>
             </div>
 
@@ -661,7 +662,7 @@
 
     </div>
 </main>
-<script src="https://kit.fontawesome.com/c476fc70a6.js" crossorigin="anonymous"></script>
+
 <script></script>
 </body>
 </html>
