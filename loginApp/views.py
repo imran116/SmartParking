@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from register.models import SocietyUser,RegisterDriver,RegisterCaretaker, SpaceOwner
+from register.models import Socity,RegisterDriver,RegisterCaretaker, SpaceOwner
 
 
 def login_view(request):
@@ -21,8 +21,8 @@ def user_login_view(request):
                 return redirect('driverDashboard')
             elif RegisterCaretaker.objects.filter(user=request.user).exists():
                 return redirect('caretakerDashboard')
-            # elif SocietyUser.objects.filter(user=request.user).exists():
-            #     return redirect('socityDashboard')
+            elif Socity.objects.filter(user=request.user).exists():
+                return redirect('socityDashboard')
             elif SpaceOwner.objects.filter(user=request.user).exists():
                 return redirect('ownerDashboard')
             else:
