@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'register',
     'loginApp',
     'logoutApp',
+    'addParkingApp',
 ]
 
 MIDDLEWARE = [

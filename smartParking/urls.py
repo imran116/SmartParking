@@ -10,4 +10,5 @@ urlpatterns = [
                   path('register/', include('register.urls')),
                   path('login/', include('loginApp.urls')),
                   path('logout/', include('logoutApp.urls')),
+                  path('add-parking/', include('addParkingApp.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
