@@ -457,15 +457,22 @@
 
         </div>
 
-        <!-- Content -->
-        <form action="#" class="flex flex-col gap-6">
+        {% for message in messages %}
+                    <div style="background-color: orangered; padding: 30px" role="alert">
+                       <p>{{ message }}</p>
+                    </div>
+        {% endfor %}
 
+
+        <!-- Content -->
+        <form action="{% url 'addParkingApp:add_parking_slot' %}" method="POST" class="flex flex-col gap-6">
+        {% csrf_token %}
         <label class="flex flex-col gap-2">
             Parking Slot Name
             <input
                     type="text"
-                    name="slotName"
-                    id="slotName"
+                    name="parking_slot_name"
+                    id="parking_slot_name"
                     placeholder="Type here.."
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -476,8 +483,8 @@
             Parking Slot Owner Name
             <input
                     type="text"
-                    name="slotOwner"
-                    id="slotOwner"
+                    name="parking_slot_owner_name"
+                    id="parking_slot_owner_name"
                     placeholder="Type here.."
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -488,8 +495,8 @@
             House / Society Name
             <input
                     type="text"
-                    name="socityName"
-                    id="socityName"
+                    name="house_or_society_name"
+                    id="house_or_society_name"
                     placeholder="Type here.."
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -500,8 +507,8 @@
             Parking Location
             <input
                     type="text"
-                    name="location"
-                    id="location"
+                    name="parking_location"
+                    id="parking_location"
                     placeholder="Type here.. e.g farmgate, mohammedpur"
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -512,8 +519,8 @@
             Parking Address
             <input
                     type="text"
-                    name="parkingAddress"
-                    id="parkingAddress"
+                    name="parking_address"
+                    id="parking_address"
                     placeholder="Type here.. e.g #House, #Road"
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -524,8 +531,8 @@
             Parking Google Map URL
             <input
                     type="text"
-                    name="mapUrl"
-                    id="mapUrl"
+                    name="parking_google_map_url"
+                    id="parking_google_map_url"
                     placeholder="Type here.."
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
@@ -535,8 +542,8 @@
         <label class="flex flex-col gap-2">
             Parking Charge Category
             <select
-                    name="ChargeCategory"
-                    id="ChargeCategory"
+                    name="parking_charge_category"
+                    id="parking_charge_category"
                     class="text-black border-collapse outline-none max-w-[450px] p-2 rounded-md"
             >
                 <option value="hourly">Hourly</option>
@@ -548,8 +555,8 @@
             Enter Parking Charge *BDT
             <input
                     type="text"
-                    name="parkingCharge"
-                    id="parkingCharge"
+                    name="parking_charge"
+                    id="parking_charge"
                     placeholder="Type here.."
                     class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
                     required
