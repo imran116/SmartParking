@@ -10,10 +10,10 @@ urlpatterns = [
     path('ownerDashboard/', ownerDashboard_view, name='ownerDashboard'),
     path('driverDashboard/', driverDashboard_view, name='driverDashboard'),
     path('dashboardAccount/', dashboardAccount_view, name='dashboardAccount'),
-    path('dashboardAddParkingSlot/', dashboardAddParkingSlot_view, name='dashboardAddParkingSlot'),
-    path('dashboardAddSlotOwner/', dashboardAddSlotOwner_view, name='dashboardAddSlotOwner'),
-    path('dashboardParkingMap/', dashboardParkingMap_view, name='dashboardParkingMap'),
-    path('dashboardBookFromParkingLot/', dashboardBookFromParkingLot_view, name='dashboardBookFromParkingLot'),
+    path('/dashboardAddParkingSlot/', dashboardAddParkingSlot_view, name='dashboardAddParkingSlot'),
+    path('/dashboardAddSlotOwner/', dashboardAddSlotOwner_view, name='dashboardAddSlotOwner'),
+    path('/dashboardParkingMap/', dashboardParkingMap_view, name='dashboardParkingMap'),
+    path('/dashboardBookFromParkingLot/', dashboardBookFromParkingLot_view, name='dashboardBookFromParkingLot'),
 
 
 ]

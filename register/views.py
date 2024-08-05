@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import RegisterDriver, RegisterCaretaker,SpaceOwner, Socity
+from .models import RegisterDriver, RegisterCaretaker, SpaceOwner, Socity
 
 
 # Register Driver Views Code Start
@@ -100,17 +100,17 @@ def call_caretaker_pages(request, username, caretaker_mobile_number):
 
 
 # Register Caretaker Views Code End
-#register space owner code starts
+# register space owner code starts
 
 
 def spaceowner(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         owner_mobile_number = request.POST.get('owner_mobile_number')
-        owner_email_address =request.POST.get('owner_email_address')
+        owner_email_address = request.POST.get('owner_email_address')
         owner_profile_image = request.FILES.get('owner_profile_image')
-        owner_society_name= request.POST.get('owner_society_name')
-        owner_address= request.POST.get('owner_address')
+        owner_society_name = request.POST.get('owner_society_name')
+        owner_address = request.POST.get('owner_address')
         password = request.POST.get('password')
         confirmPassword = request.POST.get('confirmPassword')
 
@@ -136,7 +136,7 @@ def spaceowner(request):
             owner_email_address=owner_email_address,
             owner_profile_image=owner_profile_image,
             owner_society_name=owner_society_name,
-            owner_address= owner_address
+            owner_address=owner_address
 
         )
         return redirect('ownerDashboard')
@@ -150,14 +150,10 @@ def call_owner_pages(request, username, owner_mobile_number):
     })
 
 
+# register space owner code ends
 
 
-
-#register space owner code ends
-
-
-
-#new reg society owner starts
+# new reg society owner starts
 
 
 def societyRegistration(request):
@@ -165,10 +161,10 @@ def societyRegistration(request):
         username = request.POST.get('username')
         print(username)
         society_phone = request.POST.get('society_phone')
-        society_email =request.POST.get('society_email')
+        society_email = request.POST.get('society_email')
         society_profile_picture = request.FILES.get('society_profile_picture')
-        society_house_name= request.POST.get('society_house_name')
-        s_address= request.POST.get('s_address')
+        society_house_name = request.POST.get('society_house_name')
+        s_address = request.POST.get('s_address')
         password = request.POST.get('password')
         confirmPassword = request.POST.get('confirmPassword')
 
@@ -194,7 +190,7 @@ def societyRegistration(request):
             society_email=society_email,
             society_profile_picture=society_profile_picture,
             society_house_name=society_house_name,
-            s_address= s_address
+            s_address=s_address
 
         )
         return redirect('socityDashboard')
@@ -207,8 +203,7 @@ def call_society_pages(request, username, society_phone):
         'society_phone': society_phone
     })
 
-
-#new reg society ends
+# new reg society ends
 
 # from django.shortcuts import render, redirect
 # from .forms import SocietyUserRegistrationForm

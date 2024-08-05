@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import AddParkingSlot
+from register.models import Socity
 
 
 # AddParkingSlot Views Code Start
@@ -16,7 +17,7 @@ def add_parking_slot_views(request):
         parking_charge_category = request.POST.get('parking_charge_category')
         parking_charge = request.POST.get('parking_charge')
 
-        if AddParkingSlot.objects.filter(parking_slot_name=parking_slot_name).exists():
+        if AddParkingSlot.objects.filter(parking_slot_name=parking_slot_name, user=request.user).exists():
             messages.error(request, "This Parking Slot Name Already Used.")
             return redirect('dashboardAddParkingSlot')
 
@@ -38,4 +39,16 @@ def add_parking_slot_views(request):
     else:
         return render(request, 'DashboardMenu/dashboardAddParkingSlot.html')
 
+
 # AddParkingSlot Views Code End
+
+# ParkingMap Views Code Start
+
+def parking_map_views(request):
+    parking_obj = AddParkingSlot.objects.filter(user=request.user)
+    parking_info = AddParkingSlot.objects.filter(user=request.user)[:1]
+    society_owner = Socity.objects.filter(user=request.user)[0:1]
+    return render(request, "DashboardMenu/dashboardParkingMap.html",
+                  context={'parking_obj': parking_obj, 'parking_info': parking_info,'society_owner':society_owner})
+
+# ParkingMap Views Code End

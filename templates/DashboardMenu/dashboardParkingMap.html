@@ -3,448 +3,72 @@
 
 {% block main_container %}
 
-<div class="flex justify-center">
-  <div
-    class="divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6">
-    <div class="flex flex-col gap-4 w-[100%]">
-      <h2>Single Parking Lot</h2>
-      <div
-        class="flex flex-col gap-4 h-[100%] rounded-lg justify-start"
-      >
-        <div class="flex flex-wrap gap-4">
-          <div
-            class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
-          >
-            <p>House/Socity Name: Asad Manjil</p>
-            <p>Road No: #03</p>
-            <p>Phone: 0140####799</p>
-            <p>Cost: 500 BDT/Hour</p>
-          </div>
+    <div class="flex justify-center">
+        <div
+                class="divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6">
+            <div class="flex flex-col gap-4 w-[100%]">
+                <h2>Single Parking Lot</h2>
+                <div
+                        class="flex flex-col gap-4 h-[100%] rounded-lg justify-start"
+                >
+                    <div class="flex flex-wrap gap-4">
+                        <div
+                                class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
+                        >
+                            {% for parkinginfo in parking_info %}
+                                <p>House/Society Name: {{ parkinginfo.house_or_society_name }}</p>
+                                <p>Address: {{ parkinginfo.parking_address }}</p>
+                                {% for societyOwner in society_owner %}
+                                    <p>Phone: {{ societyOwner.society_phone }}</p>
+                                {% endfor %}
+                                <p>Cost: {{ parkinginfo.parking_charge }}
+                                    BDT/ {{ parkinginfo.parking_charge_category }}</p>
+                            {% endfor %}
+                        </div>
 
-          <div class="space-y-2">
-            <div class="flex items-center gap-2">
-              <div class="w-[1rem] h-[1rem] bg-green-600"></div>
-              <span>Available</span>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-green-600"></div>
+                                <span>Available</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-red-600"></div>
+                                <span>Occupied</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
+                                <span>Available In Next 20 Minute</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 h-[300px] overflow-y-auto  overflow-x-hidden">
+                        {% for parkingObj in parking_obj %}
+                            <button
+                                    disabled
+                                    name="A1"
+                                    value="available"
+                                    class="p-4 rounded-lg {% if parkingObj.is_vacant %} bg-green-600{% elif parkingObj.is_occupied %} bg-red-600 {% else %} bg-yellow-600 {% endif %} "
+                            >
+                                {{ parkingObj.parking_slot_name }}
+                            </button>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center gap-2">
-              <div class="w-[1rem] h-[1rem] bg-red-600"></div>
-              <span>Occupied</span>
+
+            <div class="flex flex-col gap-4 justify-center items-center">
+                <h2>Parking Lot's locations</h2>
+                <img
+                        src="{% static '/library/logoAndImages/licationInMap.png' %}"
+                        alt="Socity locations"
+                        class="h-[100%]"
+                />
             </div>
-            <div class="flex items-center gap-2">
-              <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
-              <span>Available In Next 20 Minute</span>
-            </div>
-          </div>
         </div>
-
-        <div class="flex flex-wrap gap-4 h-[300px] overflow-y-auto  overflow-x-hidden">
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A1"
-            value="available"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A1
-          </button>
-          <button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3</button
-          ><button
-            disabled
-            name="A3"
-            value="soon"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A3
-          </button>
-          <button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2</button
-          ><button
-            disabled
-            name="A2"
-            value="occupied"
-            class="p-4 rounded-lg parkingSlot"
-          >
-            A2
-          </button>
-
-        </div>
-      </div>
     </div>
-
-    <div class="flex flex-col gap-4 justify-center items-center">
-      <h2>Parking Lot's locations</h2>
-      <img
-        src="{% static '/library/logoAndImages/licationInMap.png' %}"
-        alt="Socity locations"
-        class="h-[100%]"
-      />
-    </div>
-  </div>
-</div>
 
 {% endblock %}
 

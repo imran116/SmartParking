@@ -12,7 +12,7 @@ class AddParkingSlot(models.Model):
         ('monthly', 'Monthly'),
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     parking_slot_name = models.CharField(max_length=30)
     parking_slot_owner_name = models.CharField(max_length=30)
     house_or_society_name = models.CharField(max_length=30)
