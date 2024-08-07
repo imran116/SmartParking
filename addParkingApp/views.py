@@ -49,8 +49,6 @@ def parking_map_views(request):
     parking_info = AddParkingSlot.objects.filter(user=request.user)[:1]
     society_owner = Socity.objects.filter(user=request.user)[0:1]
     return render(request, "DashboardMenu/dashboardParkingMap.html",
-                  context={'parking_obj': parking_obj, 'parking_info': parking_info,'society_owner':society_owner})
+                  context={'parking_obj': parking_obj, 'parking_info': parking_info, 'society_owner': society_owner})
 
 # ParkingMap Views Code End
-
-

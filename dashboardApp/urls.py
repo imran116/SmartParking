@@ -10,12 +10,12 @@ urlpatterns = [
     path('ownerDashboard/', ownerDashboard_view, name='ownerDashboard'),
     path('driverDashboard/', driverDashboard_view, name='driverDashboard'),
     path('dashboardAccount/', dashboardAccount_view, name='dashboardAccount'),
-    path('/dashboardAddParkingSlot/', dashboardAddParkingSlot_view, name='dashboardAddParkingSlot'),
-    path('/dashboardAddSlotOwner/', dashboardAddSlotOwner_view, name='dashboardAddSlotOwner'),
-    path('/dashboardParkingMap/', dashboardParkingMap_view, name='dashboardParkingMap'),
-    path('/dashboardBookFromParkingLot/', dashboardBookFromParkingLot_view, name='dashboardBookFromParkingLot'),
+    path('dashboardAddParkingSlot/', dashboardAddParkingSlot_view, name='dashboardAddParkingSlot'),
+    path('dashboardAddSlotOwner/', dashboardAddSlotOwner_view, name='dashboardAddSlotOwner'),
+    path('dashboardParkingMap/', dashboardParkingMap_view, name='dashboardParkingMap'),
+    path('dashboardBookFromParkingLot/', dashboardBookFromParkingLot_view, name='dashboardBookFromParkingLot'),
 
     path('verify-page/', verify_caretaker, name='verify_caretaker'),
-    path('/caretaker-parking-map/', caretaker_parking_map, name='caretaker_map'),
+    path('/caretaker-parking-map/', caretaker_parking_map_verify, name='caretaker_map'),
 
 ]

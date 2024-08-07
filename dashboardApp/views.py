@@ -29,26 +29,40 @@ def caretakerDashboard_view(request):
 
 # Caretaker Space_Owner Dashboard Code Start
 
-def caretaker_parking_map(request):
+def caretaker_parking_map_verify(request):
     if request.method == 'POST':
-        mobile_no = request.POST.get("phone")
+        mobile_no = request.POST.get('phone')
         print(mobile_no)  # for debug
         if Socity.objects.filter(society_phone=mobile_no).exists():
             society_obj = Socity.objects.get(society_phone=mobile_no)
-            # society_user = Socity.objects.get(user=society_obj)
             parking_obj = AddParkingSlot.objects.filter(user=society_obj.user)
+            parking_info = AddParkingSlot.objects.filter(user=society_obj.user)[:1]
+            society_owner = Socity.objects.filter(user=society_obj.user)[0:1]
+
             register_caretaker = RegisterCaretaker.objects.get(user=request.user)
             register_caretaker.is_verify = True
             register_caretaker.save()
             return render(request, 'DashboardMenu/dashboardParkingMap_caretaker.html',
-                          context={'parking_obj': parking_obj})
+                          context={'parking_obj': parking_obj, 'parking_info': parking_info, 'society_owner': society_owner})
         else:
             messages.error(request, "not found.")
             print("not found")  # dor debug
-    return render(request, 'varify_catetaker.html')
+
+    return render(request, "varify_catetaker.html")
+
+
 
 
 # Caretaker Space_Owner Dashboard Code End
+
+
+# Caretaker map Dashboard Code Start
+
+# def caretaker_parking_map(request):
+#
+#
+
+# Caretaker map Dashboard Code End
 
 
 def driverDashboard_view(request):

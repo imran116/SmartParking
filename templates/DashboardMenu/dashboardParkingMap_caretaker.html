@@ -101,26 +101,24 @@
                 />
             </a>
 
-{#            <a#}
-{#                    href="{% url "dashboardAddSlotOwner" %}"#}
-{#                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"#}
-{#            >#}
-{#                <div class="flex gap-2">#}
-{#                    <img#}
-{#                            src="{% static '/library/svg/person.svg' %}"#}
-{#                            alt="Add Slot Owner"#}
-{#                            class="w-[1rem]"#}
-{#                    />#}
-{#                    <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>#}
-{#                </div>#}
-{#                <img#}
-{#                        src="{% static '/library/svg/rightArrow.svg' %}"#}
-{#                        alt="GO"#}
-{#                        class="w-[1rem] targetedMenu duration-[1s] "#}
-{#                />#}
-{#            </a>#}
-
-
+            {#            <a#}
+            {#                    href="{% url "dashboardAddSlotOwner" %}"#}
+            {#                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"#}
+            {#            >#}
+            {#                <div class="flex gap-2">#}
+            {#                    <img#}
+            {#                            src="{% static '/library/svg/person.svg' %}"#}
+            {#                            alt="Add Slot Owner"#}
+            {#                            class="w-[1rem]"#}
+            {#                    />#}
+            {#                    <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>#}
+            {#                </div>#}
+            {#                <img#}
+            {#                        src="{% static '/library/svg/rightArrow.svg' %}"#}
+            {#                        alt="GO"#}
+            {#                        class="w-[1rem] targetedMenu duration-[1s] "#}
+            {#                />#}
+            {#            </a>#}
 
 
             <a
@@ -383,7 +381,8 @@
                         <b class="text-nowrap">{{ request.user.username }}</b>
                         <span>Society Owner</span>
                     </div>
-                     <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff4d00;"></i></a>
+                    <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl"
+                                                                    style="color: #ff4d00;"></i></a>
 
                 </div>
             </div>
@@ -450,72 +449,73 @@
         </div>
 
         <!-- Content -->
-          <div class="flex justify-center">
-        <div
-                class="divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6">
-            <div class="flex flex-col gap-4 w-[100%]">
-                <h2>Single Parking Lot</h2>
-                <div
-                        class="flex flex-col gap-4 h-[100%] rounded-lg justify-start"
-                >
-                    <div class="flex flex-wrap gap-4">
-                        <div
-                                class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
-                        >
-                            {% for parkinginfo in parking_info %}
-                                <p>House/Society Name: {{ parkinginfo.house_or_society_name }}</p>
-                                <p>Address: {{ parkinginfo.parking_address }}</p>
-                                {% for societyOwner in society_owner %}
-                                    <p>Phone: {{ societyOwner.society_phone }}</p>
-                                {% endfor %}
-                                <p>Cost: {{ parkinginfo.parking_charge }}
-                                    BDT/ {{ parkinginfo.parking_charge_category }}</p>
-                            {% endfor %}
-                        </div>
-
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2">
-                                <div class="w-[1rem] h-[1rem] bg-green-600"></div>
-                                <span>Available</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-[1rem] h-[1rem] bg-red-600"></div>
-                                <span>Occupied</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
-                                <span>Available In Next 20 Minute</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-4 h-[300px] overflow-y-auto  overflow-x-hidden">
-                        {% for parkingObj in parking_obj %}
-                            <button
-                                    disabled
-                                    name="A1"
-                                    value="available"
-                                    class="p-4 rounded-lg {% if parkingObj.is_vacant %} bg-green-600{% elif parkingObj.is_occupied %} bg-red-600 {% else %} bg-yellow-600 {% endif %} "
+        <div class="flex justify-center">
+            <div
+                    class="divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6">
+                <div class="flex flex-col gap-4 w-[100%]">
+                    <h2>Single Parking Lot</h2>
+                    <div
+                            class="flex flex-col gap-4 h-[100%] rounded-lg justify-start"
+                    >
+                        <div class="flex flex-wrap gap-4">
+                            <div
+                                    class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
                             >
-                                {{ parkingObj.parking_slot_name }}
-                            </button>
+                                {% for parkinginfo in parking_info %}
+                                    <p>House/Society Name: {{ parkinginfo.house_or_society_name }}</p>
+                                    <p>Address: {{ parkinginfo.parking_address }}</p>
+                                    {% for societyOwner in society_owner %}
+                                        <p>Phone: {{ societyOwner.society_phone }}</p>
+                                    {% endfor %}
+                                    <p>Cost: {{ parkinginfo.parking_charge }}
+                                        BDT/ {{ parkinginfo.parking_charge_category }}</p>
+                                {% endfor %}
+                            </div>
 
-                        {% endfor %}
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-[1rem] h-[1rem] bg-green-600"></div>
+                                    <span>Available</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-[1rem] h-[1rem] bg-red-600"></div>
+                                    <span>Occupied</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
+                                    <span>Available In Next 20 Minute</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="flex flex-wrap gap-4 h-[300px] overflow-y-auto  overflow-x-hidden">
+                            {% for parkingObj in parking_obj %}
+                                <button
+                                        disabled
+                                        name="A1"
+                                        value="available"
+                                        class="p-4 rounded-lg {% if parkingObj.is_vacant %} bg-green-600{% elif parkingObj.is_occupied %} bg-red-600 {% else %} bg-yellow-600 {% endif %} "
+                                >
+                                    {{ parkingObj.parking_slot_name }}
+                                </button>
+
+                            {% endfor %}
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="flex flex-col gap-4 justify-center items-center">
-                <h2>Parking Lot's locations</h2>
-                <img
-                        src="{% static '/library/logoAndImages/licationInMap.png' %}"
-                        alt="Socity locations"
-                        class="h-[100%]"
-                />
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <h2>Parking Lot's locations</h2>
+                     {% for parkingObj in parking_info %}
+                        <iframe src="{{ parkingObj.parking_google_map_url }}" width="600" height="450" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {% endfor %}
+
+
+                </div>
             </div>
         </div>
-    </div>
 
 
     </div>
