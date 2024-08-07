@@ -15,5 +15,7 @@ urlpatterns = [
     path('/dashboardParkingMap/', dashboardParkingMap_view, name='dashboardParkingMap'),
     path('/dashboardBookFromParkingLot/', dashboardBookFromParkingLot_view, name='dashboardBookFromParkingLot'),
 
+    path('verify-page/', verify_caretaker, name='verify_caretaker'),
+    path('/caretaker-parking-map/', caretaker_parking_map, name='caretaker_map'),
 
 ]

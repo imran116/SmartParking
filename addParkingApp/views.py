@@ -52,3 +52,5 @@ def parking_map_views(request):
                   context={'parking_obj': parking_obj, 'parking_info': parking_info,'society_owner':society_owner})
 
 # ParkingMap Views Code End
+
+

@@ -20,7 +20,11 @@ def user_login_view(request):
             if RegisterDriver.objects.filter(user=request.user).exists():
                 return redirect('driverDashboard')
             elif RegisterCaretaker.objects.filter(user=request.user).exists():
-                return redirect('caretakerDashboard')
+                caretaker = RegisterCaretaker.objects.get(user=request.user)
+                if caretaker.is_verify:
+                    return redirect('caretakerDashboard')
+                else:
+                    return redirect('verify_caretaker')
             elif Socity.objects.filter(user=request.user).exists():
                 return redirect('socityDashboard')
             elif SpaceOwner.objects.filter(user=request.user).exists():

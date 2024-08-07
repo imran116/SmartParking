@@ -5,8 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Driver Dashboard</title>
-    <script src="https://kit.fontawesome.com/c476fc70a6.js" crossorigin="anonymous"></script>
+    <title>Society Dashboard</title>
     <script src="{% static '/javascript/index.js' %}" defer></script>
     <script src="{% static '/javascript/dashboard.js' %}" defer></script>
     <link rel="stylesheet" href="{% static '/css/output.css' %}"/>
@@ -46,7 +45,7 @@
             </div>
 
             <a
-                    href="{% url "socityDashboard" %}"
+                    href="{% url "caretakerDashboard" %}"
                     class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent visited:bg-red-600 rounded-md p-2"
             >
                 <div class="flex gap-2">
@@ -102,20 +101,41 @@
                 />
             </a>
 
-
 {#            <a#}
-{#                    href="{% url "dashboardParkingMap" %}"#}
+{#                    href="{% url "dashboardAddSlotOwner" %}"#}
 {#                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"#}
 {#            >#}
 {#                <div class="flex gap-2">#}
-{#                    <img src="{% static '/library/svg/map.svg' %}" alt="Map" class="w-[1rem]"/>#}
-{#                    <span class="targetedMenu duration-[1s] ">Parking Map</span>#}
+{#                    <img#}
+{#                            src="{% static '/library/svg/person.svg' %}"#}
+{#                            alt="Add Slot Owner"#}
+{#                            class="w-[1rem]"#}
+{#                    />#}
+{#                    <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>#}
 {#                </div>#}
 {#                <img#}
 {#                        src="{% static '/library/svg/rightArrow.svg' %}"#}
 {#                        alt="GO"#}
 {#                        class="w-[1rem] targetedMenu duration-[1s] "#}
-{#                /></a>#}
+{#                />#}
+{#            </a>#}
+
+
+
+
+            <a
+                    href="{% url "caretaker_map" %}"
+                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
+            >
+                <div class="flex gap-2">
+                    <img src="{% static '/library/svg/map.svg' %}" alt="Map" class="w-[1rem]"/>
+                    <span class="targetedMenu duration-[1s] ">Parking Map</span>
+                </div>
+                <img
+                        src="{% static '/library/svg/rightArrow.svg' %}"
+                        alt="GO"
+                        class="w-[1rem] targetedMenu duration-[1s] "
+                /></a>
 
             <a
                     href="#"
@@ -361,11 +381,10 @@
                     </a>
                     <div class="flex flex-col">
                         <b class="text-nowrap">{{ request.user.username }}</b>
-                        <span>Driver</span>
+                        <span>Society Owner</span>
                     </div>
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff4d00;"></i></a>
-                    {% endif %}
+                     <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff4d00;"></i></a>
+
                 </div>
             </div>
 
@@ -431,192 +450,77 @@
         </div>
 
         <!-- Content -->
-        <div class="flex flex-col gap-4 bg-card-color p-6">
-            <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
-                <div class="space-y-2">
-                    <h3>Current Parking Status</h3>
-                    <!-- <span class="text-green-600">All Parking Activity</span> -->
-                    <div class="flex gap-2 flex-wrap">
-                        <p class="border p-2 rounded-md hover:bg-custom-Orange">
-                            Exit current parking
-                        </p>
-                        <p class="border p-2 rounded-md hover:bg-custom-Orange">
-                            Extend Time
-                        </p>
-                        <p class="border p-2 rounded-md hover:bg-custom-Orange">
-                            Payment
-                        </p>
+          <div class="flex justify-center">
+        <div
+                class="divWrapperMaxWidth my-[3rem] flex flex-col-reverse md:customGrid justify-between gap-6">
+            <div class="flex flex-col gap-4 w-[100%]">
+                <h2>Single Parking Lot</h2>
+                <div
+                        class="flex flex-col gap-4 h-[100%] rounded-lg justify-start"
+                >
+                    <div class="flex flex-wrap gap-4">
+                        <div
+                                class="w-[100%] max-w-[350px] min-w-[200px] max-h-[170px] flex flex-col gap-2 p-4 bg-card-color rounded-lg"
+                        >
+                            {% for parkinginfo in parking_info %}
+                                <p>House/Society Name: {{ parkinginfo.house_or_society_name }}</p>
+                                <p>Address: {{ parkinginfo.parking_address }}</p>
+                                {% for societyOwner in society_owner %}
+                                    <p>Phone: {{ societyOwner.society_phone }}</p>
+                                {% endfor %}
+                                <p>Cost: {{ parkinginfo.parking_charge }}
+                                    BDT/ {{ parkinginfo.parking_charge_category }}</p>
+                            {% endfor %}
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-green-600"></div>
+                                <span>Available</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-red-600"></div>
+                                <span>Occupied</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-[1rem] h-[1rem] bg-yellow-500"></div>
+                                <span>Available In Next 20 Minute</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 h-[300px] overflow-y-auto  overflow-x-hidden">
+                        {% for parkingObj in parking_obj %}
+                            <button
+                                    disabled
+                                    name="A1"
+                                    value="available"
+                                    class="p-4 rounded-lg {% if parkingObj.is_vacant %} bg-green-600{% elif parkingObj.is_occupied %} bg-red-600 {% else %} bg-yellow-600 {% endif %} "
+                            >
+                                {{ parkingObj.parking_slot_name }}
+                            </button>
+
+                        {% endfor %}
+
                     </div>
                 </div>
-
-                <div class="flex gap-2 flex-wrap">
-                    <fieldset
-                            class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-                    >
-                        <label for="date" class="flex gap-2 items-center">
-                            <img
-                                    src="{% static '/library/svg/search.svg' %}"
-                                    alt="Search"
-                                    class="w-[1rem]"
-                            />
-                            <input
-                                    type="search"
-                                    name="date"
-                                    id="date"
-                                    class="border-collapse bg-transparent outline-none"
-                                    placeholder="Search by Date"
-                            />
-                        </label>
-                    </fieldset>
-
-                    <fieldset
-                            class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-                    >
-                        <label for="Status" class="flex gap-2 items-center">
-                            Short by:
-                            <select name="status" id="Status" class="bg-transparent">
-                                <option value="all">All</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </label>
-                    </fieldset>
-                </div>
             </div>
 
-            <div class="overflow-auto max-h-[500px] flex">
-                <table
-                        class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
-                >
-                    <thead class="sticky bg-custom-Orange top-0">
-                    <tr>
-                        <th>
-                            Parking <br/>
-                            Slot Name
-                        </th>
-                        <th>Vehicle Type</th>
-                        <th class="">
-                            <img
-                                    src="{% static '/library/svg/cctv.svg' %}"
-                                    alt="CCTV"
-                                    class="w-[1rem] inline"
-                            />
-                            <span>CCTV</span>
-                        </th>
-                        <th>Date</th>
-                        <th>Duration</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-
-                    <tbody class="">
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>
-                            <a
-                                    href="#"
-                                    class="text-green-500 border-b-2 hover:border-green-500"
-                            >VIEW</a
-                            >
-                        </td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td><span class="text-red-500">NOT AVAILABLE</span></td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="flex flex-col gap-4 justify-center items-center">
+                <h2>Parking Lot's locations</h2>
+                <img
+                        src="{% static '/library/logoAndImages/licationInMap.png' %}"
+                        alt="Socity locations"
+                        class="h-[100%]"
+                />
             </div>
         </div>
+    </div>
 
 
     </div>
 </main>
-
+<script src="https://kit.fontawesome.com/c476fc70a6.js" crossorigin="anonymous"></script>
 <script></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

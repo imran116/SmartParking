@@ -33,6 +33,7 @@ class RegisterCaretaker(models.Model):
     caretaker_mobile_number = models.CharField(max_length=20)
     caretaker_profile_image = models.ImageField(upload_to='caretaker_profile/')
     caretaker_nid_image = models.ImageField(upload_to='caretaker_nid/')
+    is_verify = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username

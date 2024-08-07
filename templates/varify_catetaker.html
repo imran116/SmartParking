@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'caretaker_map' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="phone" id="phone" placeholder="enter society owner phone">
+    <button type="submit">Varify</button>
+</form>
+
+</body>
+</html>
