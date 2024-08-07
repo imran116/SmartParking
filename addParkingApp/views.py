@@ -42,13 +42,76 @@ def add_parking_slot_views(request):
 
 # AddParkingSlot Views Code End
 
+# # ParkingMap Views Code Start
+
+# def parking_map_views(request):
+#     parking_obj = AddParkingSlot.objects.filter(user=request.user)
+#     parking_info = AddParkingSlot.objects.filter(user=request.user)[:1]
+#     society_owner = Socity.objects.filter(user=request.user)[0:1]
+#     return render(request, "DashboardMenu/dashboardParkingMap.html",
+#                   context={'parking_obj': parking_obj, 'parking_info': parking_info,'society_owner':society_owner})
+
+# # ParkingMap Views Code End
+
+#new one
 # ParkingMap Views Code Start
 
 def parking_map_views(request):
-    parking_obj = AddParkingSlot.objects.filter(user=request.user)
-    parking_info = AddParkingSlot.objects.filter(user=request.user)[:1]
-    society_owner = Socity.objects.filter(user=request.user)[0:1]
-    return render(request, "DashboardMenu/dashboardParkingMap.html",
-                  context={'parking_obj': parking_obj, 'parking_info': parking_info,'society_owner':society_owner})
+    verified_society_id = request.session.get('verified_society_id')
+    if not verified_society_id:
+        return redirect('addParkingApp:verify_society')
+
+    parking_obj = AddParkingSlot.objects.filter(house_or_society_name=verified_society_id)
+    parking_info = AddParkingSlot.objects.filter(house_or_society_name=verified_society_id)[:1]
+    society_owner = Socity.objects.filter(id=verified_society_id)[:1]
+
+    return render(request, "DashboardMenu/dashboardParkingMap.html", {
+        'parking_obj': parking_obj,
+        'parking_info': parking_info,
+        'society_owner': society_owner
+    })
 
 # ParkingMap Views Code End
+#new one ends
+
+#new code for verify society
+# addParkingApp/views.py
+
+
+# VerifySociety Views Code Start
+
+def verify_society_view(request):
+    if request.method == 'POST':
+        society_phone = request.POST.get('society_phone')
+        society = Socity.objects.filter(society_phone=society_phone).first()
+        
+        if society:
+            request.session['verified_society_id'] = society.id
+            return redirect('addParkingApp:parking_map')
+        else:
+            messages.error(request, "Society not found.")
+            return redirect('addParkingApp:verify_society')
+    return render(request, 'DashboardMenu/verifySociety.html')
+
+# VerifySociety Views Code End
+
+
+# def verify_society(request):
+#     if request.method == 'POST':
+#         society_phone = request.POST.get('society_phone')
+#         try:
+#             society = Socity.objects.get(society_phone=society_phone)
+#             request.session['verified_society_id'] = society.id
+#             return redirect('addParkingApp:parking_map')
+#         except Socity.DoesNotExist:
+#             messages.error(request, "Society owner with this phone number does not exist.")
+#             return redirect('addParkingApp:verify_society')
+#     return render(request, 'DashboardMenu/verify_society.html')
+
+# def parking_map_views(request):
+#     verified_society_id = request.session.get('verified_society_id')
+#     if not verified_society_id:
+#         return redirect('addParkingApp:verify_society')
+    
+#     parking_slots = AddParkingSlot.objects.filter(house_or_society_name=verified_society_id)
+#     return render(request, 'DashboardMenu/dashboardParkingMap.html', {'parking_slots': parking_slots})

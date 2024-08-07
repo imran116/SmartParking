@@ -1,0 +1,24 @@
+<!-- templates/DashboardMenu/verify_society.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Society</title>
+</head>
+<body>
+    <h2>Verify Society</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="society_phone">Society Owner's Phone Number:</label>
+        <input type="text" id="society_phone" name="society_phone" required>
+        <button type="submit">Verify</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

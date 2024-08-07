@@ -33,3 +33,6 @@ class AddParkingSlot(models.Model):
         return f"{self.parking_slot_owner_name} -- {self.parking_slot_name}"
 
 # AddParkingSlot Model Code End
+
+
+
