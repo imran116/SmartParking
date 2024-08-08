@@ -46,16 +46,15 @@ class SpaceOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     owner_mobile_number = models.CharField(max_length=20)
     owner_email_address = models.CharField(max_length=20)
-    owner_profile_image = models.ImageField(upload_to='E:\Sprofile_pictures')
+    owner_profile_image = models.ImageField(upload_to='Sprofile_pictures')
     owner_society_name = models.CharField(max_length=20)
     owner_address = models.CharField(max_length=20)
 
     def __str__(self):
         return self.user.username
 
-#new society user registration begins
 
-
+# new society user registration begins
 
 
 class Socity(models.Model):
@@ -71,7 +70,7 @@ class Socity(models.Model):
 
 # class SocietyUser(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE , blank= True, null=True)
-    
+
 #     society_phone = models.CharField(max_length=20)
 #     society_email = models.CharField(max_length=20)
 #     society_profile_picture = models.ImageField(upload_to='society_profile_pictures/')
@@ -82,11 +81,7 @@ class Socity(models.Model):
 #         return self.user.username
 
 
-
-
-
-#new society user registration ends
-
+# new society user registration ends
 
 
 # # Register owner Model (ends)

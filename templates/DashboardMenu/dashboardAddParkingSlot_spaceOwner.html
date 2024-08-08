@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Society Dashboard</title>
+    <title>Add Parking Slot</title>
     <script src="{% static '/javascript/index.js' %}" defer></script>
     <script src="{% static '/javascript/dashboard.js' %}" defer></script>
     <link rel="stylesheet" href="{% static '/css/output.css' %}"/>
@@ -101,6 +101,25 @@
                 />
             </a>
 
+{#            <a#}
+{#                    href="{% url "dashboardAddSlotOwner" %}"#}
+{#                    class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"#}
+{#            >#}
+{#                <div class="flex gap-2">#}
+{#                    <img#}
+{#                            src="{% static '/library/svg/person.svg' %}"#}
+{#                            alt="Add Slot Owner"#}
+{#                            class="w-[1rem]"#}
+{#                    />#}
+{#                    <span class="targetedMenu duration-[1s] ">Add Slot Owner</span>#}
+{#                </div>#}
+{#                <img#}
+{#                        src="{% static '/library/svg/rightArrow.svg' %}"#}
+{#                        alt="GO"#}
+{#                        class="w-[1rem] targetedMenu duration-[1s] "#}
+{#                />#}
+{#            </a>#}
+
             <a
                     href="{% url "space_owner_add_parking" %}"
                     class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
@@ -121,7 +140,7 @@
             </a>
 
             <a
-                    href="{% url "verify_space_owner" %}"
+                    href="{% url "addParkingApp:parking_map" %}"
                     class="eachSidebarOption flex justify-between hover:bg-Custom-Transparent rounded-md p-2"
             >
                 <div class="flex gap-2">
@@ -378,11 +397,8 @@
                     </a>
                     <div class="flex flex-col">
                         <b class="text-nowrap">{{ request.user.username }}</b>
-                        <span>Space Owner</span>
+                        <span>Society Owner</span>
                     </div>
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'logoutApp:logout_user' %}"> <i class="fa-solid fa-arrow-right-from-bracket fa-2xl" style="color: #ff4d00;"></i></a>
-                    {% endif %}
                 </div>
             </div>
 
@@ -419,326 +435,133 @@
                 </div>
             </div>
 
-            <!-- THESE BOXES ARE ONLY FOR driverDashboard -->
-            <div class="flex flex-wrap gap-4 justify-start">
-
-                <div
-                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-                >
-                    <p>Total Time</p>
-                    <h3 class="text-custom-Orange">00:30</h3>
-                </div>
-
-                <div
-                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-                >
-                    <p>Total Bill</p>
-                    <h3 class="text-custom-Orange">300 ৳</h3>
-                </div>
-
-                <div
-                        class="text-center p-2 flex flex-col justify-center bg-card-color rounded-md"
-                >
-                    <p>Balance</p>
-                    <h3 class="text-custom-Orange">5000 ৳</h3>
-                </div>
-            </div>
-
 
         </div>
+
+        {% for message in messages %}
+                    <div style="background-color: orangered; padding: 30px" role="alert">
+                       <p>{{ message }}</p>
+                    </div>
+        {% endfor %}
+
 
         <!-- Content -->
+        <form action="{% url 'addParkingApp:add_parking_slot' %}" method="POST" class="flex flex-col gap-6">
+        {% csrf_token %}
+        <label class="flex flex-col gap-2">
+            Parking Slot Name
+            <input
+                    type="text"
+                    name="parking_slot_name"
+                    id="parking_slot_name"
+                    placeholder="Type here.."
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
 
-        <div class="flex flex-col gap-4 bg-card-color p-6">
-            <div class="flex flex-wrap justify-between gap-4 p-0 items-center">
-                <div class="">
-                    <h3>Current Parking Status</h3>
-                    <span class="text-green-600">All Members</span>
-                </div>
+        <label class="flex flex-col gap-2">
+            Parking Slot Owner Name
+            <input
+                    type="text"
+                    name="parking_slot_owner_name"
+                    id="parking_slot_owner_name"
+                    placeholder="Type here.."
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
 
-                <div class="flex gap-2 flex-wrap">
-                    <fieldset
-                            class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-                    >
-                        <label for="phoneNumber" class="flex gap-2 items-center">
-                            <img
-                                    src="{% static '/library/svg/search.svg' %}"
-                                    alt="Search"
-                                    class="w-[1rem]"
-                            />
-                            <input
-                                    type="search"
-                                    name="phoneNumber"
-                                    id="phoneNumber"
-                                    class="border-collapse bg-transparent outline-none"
-                                    placeholder="Search by phone number"
-                            />
-                        </label>
-                    </fieldset>
+        <label class="flex flex-col gap-2">
+            House / Society Name
+            <input
+                    type="text"
+                    name="house_or_society_name"
+                    id="house_or_society_name"
+                    placeholder="Type here.."
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
 
-                    <fieldset
-                            class="bg-Custom-Transparent border-collapse flex items-center h-[3rem] p-2 rounded-md"
-                    >
-                        <label for="Status" class="flex gap-2 items-center">
-                            Short by:
-                            <select name="status" id="Status" class="bg-transparent">
-                                <option value="all">All</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                                <option value="upcoming">Upcoming</option>
-                            </select>
-                        </label>
-                    </fieldset>
-                </div>
-            </div>
+        <label class="flex flex-col gap-2">
+            Parking Location
+            <input
+                    type="text"
+                    name="parking_location"
+                    id="parking_location"
+                    placeholder="Type here.. e.g farmgate, mohammedpur"
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
 
-            <div class="overflow-auto max-h-[500px] flex">
-                <table
-                        class="currentParkingStatusTable table-auto w-[100%] min-w-[900px] dashboardTable"
-                >
-                    <thead class="sticky bg-custom-Orange top-0">
-                    <tr>
-                        <th>
-                            Parking <br/>
-                            Slot Name
-                        </th>
-                        <th>Vehicle Type</th>
-                        <th>Driver Phone</th>
-                        <th>Date</th>
-                        <th>Duration</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
+        <label class="flex flex-col gap-2">
+            Parking Address
+            <input
+                    type="text"
+                    name="parking_address"
+                    id="parking_address"
+                    placeholder="Type here.. e.g #House, #Road"
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
 
-                    <tbody class="">
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Active</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td>------</td>
-                        <td class="statusCell">------</td>
-                    </tr>
-                    <tr>
-                        <td>A1</td>
-                        <td>2 Wheeler</td>
-                        <td>0140####799</td>
-                        <td>10-7-2024</td>
-                        <td>2:00pm-3:00pm</td>
-                        <td>400 BDT</td>
-                        <td class="statusCell">Upcoming</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <label class="flex flex-col gap-2">
+            Parking Google Map URL
+            <input
+                    type="text"
+                    name="parking_google_map_url"
+                    id="parking_google_map_url"
+                    placeholder="Type here.."
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
+
+        <label class="flex flex-col gap-2">
+            Parking Charge Category
+            <select
+                    name="parking_charge_category"
+                    id="parking_charge_category"
+                    class="text-black border-collapse outline-none max-w-[450px] p-2 rounded-md"
+            >
+                <option value="hourly">Hourly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+        </label>
+
+        <label class="flex flex-col gap-2">
+            Enter Parking Charge *BDT
+            <input
+                    type="text"
+                    name="parking_charge"
+                    id="parking_charge"
+                    placeholder="Type here.."
+                    class="border-collapse outline-none max-w-[450px] p-2 rounded-md text-black"
+                    required
+            />
+        </label>
+
+        <button
+                type="submit"
+                class="bg-custom-Orange border-collapse outline-none max-w-[200px] p-2 rounded-md hover:scale-[1.01]"
+        >
+            Submit
+        </button>
+    </form>
+
 
     </div>
 </main>
-<script src="https://kit.fontawesome.com/c476fc70a6.js" crossorigin="anonymous"></script>
+
 <script></script>
 </body>
 </html>
+
+
+
 
 
 
